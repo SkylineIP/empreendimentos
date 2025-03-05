@@ -1,38 +1,42 @@
 'use client'
 
-
 import { createContext, useContext, useState, ReactNode } from "react";
+import { usePathname } from "next/navigation";
 
-// Definição do tipo do usuário
-export interface User {
-  name: string;
-  email: string;
-}
-
-// Definição do tipo do contexto
-interface ContextType {
-  user: User | null;
-  login: (userData: User) => void;
-  logout: () => void;
+export interface Context {
+  sound: boolean;
+  toggleSound: () => void;
+  submenu: string;
+  selected: string;
+  setSubmenuAndSelected: (submenu: string, selected: string) => void;
 }
 
 // Criando o contexto com um valor inicial opcional
-const ContextDef = createContext<ContextType | undefined>(undefined);
+const ContextDef = createContext<Context | undefined>(undefined);
 
 // Criando o provider
 export const ContextDefault = ({ children }: { children: ReactNode }) => {
-  const [user, setUser] = useState<User | null>({name: 'Fernando', email: 'fernando@example.com'});
+  const currenthPath = usePathname();
+  const [sound, setSound] = useState(false);
+  const [menu, setMenu] = useState({ submenu: '', selected: currenthPath });
 
-  const login = (userData: User) => {
-    setUser(userData);
+  const toggleSound = () => {
+    setSound(!sound);
   };
 
-  const logout = () => {
-    setUser(null);
+  const setSubmenuAndSelected = (submenu: string, selected: string) => {
+    setMenu({ submenu, selected });
   };
+  
 
   return (
-    <ContextDef.Provider value={{ user, login, logout }}>
+    <ContextDef.Provider value={{ 
+      sound, 
+      toggleSound, 
+      submenu: menu.submenu, 
+      selected: menu.selected, 
+      setSubmenuAndSelected,
+    }}>
       {children}
     </ContextDef.Provider>
   )

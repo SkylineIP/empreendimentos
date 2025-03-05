@@ -1,15 +1,14 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import React from 'react';
-import { ContextDefault } from '../context/Context';
+import React from "react";
+import { ContextDefault } from "../context/Context";
 
-import '@fontsource/roboto/300.css';
-import '@fontsource/roboto/400.css';
-import '@fontsource/roboto/500.css';
-import '@fontsource/roboto/700.css';
+import BackgroundMusic from "./components/BackgroundMusix";
+
+import ThemeRegistry from "./materialUITheme";
 
 export const metadata: Metadata = {
-  title: "Padrão",
+  title: "Modelo Base",
   description: "App for enterprises made by Fernando Oliveira",
 };
 
@@ -20,13 +19,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pt-br">
-      <body
-        className={`font-bold`}
-      >
+      <body className={`bg-background font-[Aktiv] text-foreground`}>
         <React.StrictMode>
-        <ContextDefault>
-        {children}
-        </ContextDefault>
+          <ContextDefault>
+            <ThemeRegistry>{children}</ThemeRegistry>
+            <BackgroundMusic />
+            {/* preciso colocar a barra lateral aqui, porque ela aparece em todas as telas, menos na rota '/' e na rota '/menu'*/}
+          </ContextDefault>
         </React.StrictMode>
       </body>
     </html>

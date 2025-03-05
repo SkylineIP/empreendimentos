@@ -1,6 +1,6 @@
 {
-  "name": "carmel",
-  "version": "0.1.0",
+  "name": "modelo-telas-interativas",
+  "version": "1.0.0",
   "private": true,
   "scripts": {
     "dev": "next dev --turbopack",
@@ -14,7 +14,7 @@
     "@fontsource/roboto": "^5.1.1",
     "@mui/icons-material": "^6.4.2",
     "@mui/material": "^6.4.2",
-    "next": "15.1.4",
+    "next": "^15.1.6",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "tailwindcss-animated": "^2.0.0"

@@ -97,6 +97,7 @@ Coloque imagens na pasta `public/` e use o componente **Next.js `<Image/>`**:
 - **Nome:** Altere o `title` dentro de `metadata` no arquivo `/src/app/layout.tsx`.  
 - **Logo:** Substitua o arquivo `favicon.ico` dentro de `/app`.  
 
+✅ **VERSÂO 18 DO NODE**  
 ---
 
 ## 🌍 Saiba Mais

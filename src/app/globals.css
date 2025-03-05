@@ -3,14 +3,18 @@
 @tailwind utilities;
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: white;
+  --foreground: white;
+  --menu: red;
+  --menuText: #55551C;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: white;
+    --foreground: white;
+    --menu: red;
+    --menuText: #55551C;
   }
 }
 
@@ -19,4 +23,22 @@
   .no-scrollbar::-webkit-scrollbar {
     display: none;
   }
+}
+
+.linha {
+  display: inline-block;
+  width: 50px;
+  height: 1px;
+  background-color: #55551C;
+  vertical-align: middle;
+}
+
+@media (min-width: 1536px) {
+  .desktop-block {
+    display: block; /* Exibe o elemento */
+  }
+}
+
+.prevent-clicks {
+  pointer-events: none;
 }
