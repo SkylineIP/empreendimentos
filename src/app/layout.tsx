@@ -8,7 +8,7 @@ import BackgroundMusic from "./components/BackgroundMusix";
 import ThemeRegistry from "./materialUITheme";
 
 export const metadata: Metadata = {
-  title: "Modelo Base",
+  title: "Dresden Altez",
   description: "App for enterprises made by Fernando Oliveira",
 };
 

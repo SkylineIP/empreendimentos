@@ -3,18 +3,18 @@
 @tailwind utilities;
 
 :root {
-  --background: white;
-  --foreground: white;
-  --menu: red;
-  --menuText: #55551C;
+  --background: #E2DED2;
+  --foreground: #896337;
+  --menu: #AFA38B;
+  --menuText: #1E1E1E;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: white;
-    --foreground: white;
-    --menu: red;
-    --menuText: #55551C;
+    --background: #1E1E1E;
+    --foreground: #896337;
+    --menu: #AFA38B;
+    --menuText: #E2DED2;
   }
 }
 
@@ -22,20 +22,6 @@
   /* Chrome, Safari and Opera */
   .no-scrollbar::-webkit-scrollbar {
     display: none;
-  }
-}
-
-.linha {
-  display: inline-block;
-  width: 50px;
-  height: 1px;
-  background-color: #55551C;
-  vertical-align: middle;
-}
-
-@media (min-width: 1536px) {
-  .desktop-block {
-    display: block; /* Exibe o elemento */
   }
 }
 

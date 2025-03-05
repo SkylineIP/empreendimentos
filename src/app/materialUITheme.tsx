@@ -11,17 +11,17 @@ import LoadingOverlay from "./components/Loading";
 const theme = createTheme({
   palette: {
     background: {
-      default: "#000000",
+      default: "#E2DED2",
     },
     primary: {
-      main: "#000000",
+      main: "#896337",
     },
     secondary: {
-      main: "#FFFFFF",
+      main: "#AFA38B",
     },
     text: {
-      primary: "#FFFFFF",
-      secondary: "#000000",
+      primary: "#E2DED2",
+      secondary: "#1E1E1E",
     },
   },
   typography: {
