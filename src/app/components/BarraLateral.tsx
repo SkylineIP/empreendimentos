@@ -1,4 +1,4 @@
-"use client";
+'use client';
 
 //import Image from "next/image";
 import React, { memo } from "react";
@@ -20,7 +20,7 @@ const BarraLateral: React.FC = memo(function BarraLateral() {
   return (
     <>
       {/* Menu */}
-      <div className="grow p-4 flex flex-col w-full justify-evenly">
+      <div className="grow bg-black flex flex-col w-1/4 justify-evenly fixed h-screen my-6 rounded-r-3xl">
         {menuStructure.map((item, index) => (
           <div key={index + item.title} className="w-full">
             <button
@@ -29,7 +29,7 @@ const BarraLateral: React.FC = memo(function BarraLateral() {
                 router.push(item.caminho);
                 //setIsOpen(false);
               }}
-              className={`w-full font-thin tracking-[5px] text-[#55551C] text-[1.2vw] desktop:text-[0.8vw] desktopmini:text-[0.8vw] font-aktiv text-left p-2 ${
+              className={`w-full font-thin tracking-[5px] text-background text-[1.2vw] desktop:text-[0.8vw] desktopmini:text-[0.8vw] font-aktiv text-left p-2 ${
                 selected === item.caminho ? "underline italic" : ""
               }`}
             >
