@@ -28,3 +28,27 @@
 .prevent-clicks {
   pointer-events: none;
 }
+
+@font-face {
+  font-family: 'InterTight';
+  font-style: regular;
+  font-weight: 400;
+  font-display: swap;
+  src: url('./fonts/InterTight-Regular.ttf') format('ttf');
+}
+
+@font-face {
+  font-family: 'InstrumentSerif-Regular';
+  font-style: regular;
+  font-weight: 400;
+  font-display: swap;
+  src: url('./fonts/InstrumentSerif-Regular.ttf') format('ttf');
+}
+
+@font-face {
+  font-family: 'InstrumentSerif-Italic';
+  font-style: regular;
+  font-weight: 400;
+  font-display: swap;
+  src: url('./fonts/InstrumentSerif-Italic.ttf') format('ttf');
+}

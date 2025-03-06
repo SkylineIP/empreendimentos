@@ -25,7 +25,7 @@ const theme = createTheme({
     },
   },
   typography: {
-    fontFamily: `"Aktiv"`,
+    fontFamily: `"InterTight", "InstrumentSerif-Regular", "InstrumentSerif-Italic",`,
   },
 });
 
@@ -57,7 +57,7 @@ export default function ThemeRegistry({ children }: { children: React.ReactNode 
   return (
     <ThemeProvider theme={theme}>
       {loading && <LoadingOverlay />}
-      {pathname === '/' || pathname === '/menu' ? '' : <BarraLateral />}
+      {/* pathname === '/' || pathname === '/menu' ? '' : <BarraLateral /> */}
       {isLandscape ? children : <OrientationWarning />}
     </ThemeProvider>
   );
