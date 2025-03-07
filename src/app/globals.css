@@ -52,3 +52,7 @@
   font-display: swap;
   src: url('./fonts/InstrumentSerif-Italic.ttf') format('ttf');
 }
+
+.font-inter {
+  font-family: 'InterTight', sans-serif;
+}

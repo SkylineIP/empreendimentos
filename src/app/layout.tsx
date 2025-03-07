@@ -19,7 +19,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pt-br">
-      <body className={`bg-background font-[Aktiv] text-foreground`}>
+      <body className={`bg-background font-inter text-foreground`}>
         <React.StrictMode>
           <ContextDefault>
             <ThemeRegistry>{children}</ThemeRegistry>

@@ -29,7 +29,7 @@ const BarraLateral: React.FC = memo(function BarraLateral() {
                 router.push(item.caminho);
                 //setIsOpen(false);
               }}
-              className={`w-full font-thin tracking-[5px] text-background text-[1.2vw] desktop:text-[0.8vw] desktopmini:text-[0.8vw] font-aktiv text-left p-2 ${
+              className={`w-full font-inter tracking-[5px] text-background text-[1.2vw] desktop:text-[0.8vw] desktopmini:text-[0.8vw] font-aktiv text-left p-2 ${
                 selected === item.caminho ? "underline italic" : ""
               }`}
             >
