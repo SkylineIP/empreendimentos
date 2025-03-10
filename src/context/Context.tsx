@@ -2,6 +2,7 @@
 
 import { createContext, useContext, useState, ReactNode } from "react";
 import { usePathname } from "next/navigation";
+import menuStructure from "../app/utils/menuStructure";
 
 export interface Context {
   sound: boolean;
@@ -9,6 +10,8 @@ export interface Context {
   submenu: string;
   selected: string;
   setSubmenuAndSelected: (submenu: string, selected: string) => void;
+  openMenu: boolean;
+  setOpenMenu: (open: boolean) => void;
 }
 
 // Criando o contexto com um valor inicial opcional
@@ -18,8 +21,14 @@ const ContextDef = createContext<Context | undefined>(undefined);
 export const ContextDefault = ({ children }: { children: ReactNode }) => {
   const currenthPath = usePathname();
   const [sound, setSound] = useState(false);
-  const [menu, setMenu] = useState({ submenu: '', selected: currenthPath });
+  let arrayOfSubmenu = '';
+  if(menuStructure.find((item: { caminho: string }) => item.caminho == currenthPath)){
+  const indexSelected = menuStructure.findIndex((item: { caminho: string }) => item.caminho == currenthPath);
+  arrayOfSubmenu = menuStructure[indexSelected].submenu[0];
+  }
 
+  const [menu, setMenu] = useState({ submenu: arrayOfSubmenu, selected: currenthPath });
+  const [openMenu, setOpenMenu] = useState(true);
   const toggleSound = () => {
     setSound(!sound);
   };
@@ -36,6 +45,8 @@ export const ContextDefault = ({ children }: { children: ReactNode }) => {
       submenu: menu.submenu, 
       selected: menu.selected, 
       setSubmenuAndSelected,
+      openMenu,
+      setOpenMenu,
     }}>
       {children}
     </ContextDef.Provider>
