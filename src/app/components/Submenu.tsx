@@ -24,8 +24,9 @@ const Submenu: React.FC = memo(function Submenu() {
                   onClick={ () => {
                     setSubmenuAndSelected(item, selected || '');
                   }}
+                  disabled={item == 'TOUR VIRTUAL'}
                 >
-                  {/* Ícone de fundo esquerdo */}
+                  {/* {console.log(item, submenu)} */}
                   <div className="absolute inset-y-0 left-0 w-12 h-full">
                     <Image
                       src={`${submenu == item ? '/menu/grafismo-submenu.svg' : '/menu/grafismo-submenu-pressed.svg'}`}

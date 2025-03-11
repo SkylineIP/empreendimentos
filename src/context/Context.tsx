@@ -28,7 +28,7 @@ export const ContextDefault = ({ children }: { children: ReactNode }) => {
   }
 
   const [menu, setMenu] = useState({ submenu: arrayOfSubmenu, selected: currenthPath });
-  const [openMenu, setOpenMenu] = useState(true);
+  const [openMenu, setOpenMenu] = useState(false);
   const toggleSound = () => {
     setSound(!sound);
   };

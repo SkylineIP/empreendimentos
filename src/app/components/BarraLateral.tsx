@@ -131,7 +131,7 @@ const BarraLateral: React.FC = memo(function BarraLateral() {
             height={90}
           />
         </button>
-        <button>
+        <button onClick={() => router.push("/menu")}>
           <Image
             src="/menu/home.svg"
             alt="Ícone de saída"

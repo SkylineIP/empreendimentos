@@ -30,7 +30,6 @@ const theme = createTheme({
 });
 
 import { ThemeProvider } from "@mui/material/styles";
-import BarraLateral from "./components/BarraLateral";
 
 const OrientationWarning = () => (
   <div className="flex flex-col items-center justify-center h-screen background text-primary">
@@ -45,7 +44,6 @@ export default function ThemeRegistry({ children }: { children: React.ReactNode 
   const [loading, setLoading] = useState(false);
   const pathname = usePathname();
   const isLandscape = useOrientation();
-  console.log(pathname);
   useEffect(() => {
     setLoading(true); // Ativa o loading
     const timer = setTimeout(() => {

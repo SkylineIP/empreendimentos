@@ -23,6 +23,24 @@
   .no-scrollbar::-webkit-scrollbar {
     display: none;
   }
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 8px;
+    border-radius: 50px;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-track {
+    background: #ae967a;
+    border-radius: 50px;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    background: #896337;
+    border-radius: 50px;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: #4e4337;
+  }
 }
 
 .prevent-clicks {
@@ -47,7 +65,7 @@
 
 @font-face {
   font-family: 'InstrumentSerif-Italic';
-  font-style: regular;
+  font-style: italic;
   font-weight: 400;
   font-display: swap;
   src: url('./fonts/InstrumentSerif-Italic.ttf') format('ttf');
@@ -55,4 +73,12 @@
 
 .font-inter {
   font-family: 'InterTight', sans-serif;
+}
+
+.font-instrument {
+  font-family: 'InstrumentSerif-Regular', 'InstrumentSerif-Italic';
+}
+
+button:disabled {
+  opacity: 0.5;
 }

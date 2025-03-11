@@ -4,80 +4,79 @@ import Image from "next/image";
 import React from "react";
 import { useRouter } from "next/navigation";
 import { useContextDefault } from "../../context/Context";
-
-const menu: { [key: string]: string[] } = {
-  institucional: [],
-  assinaturas: [
-    "ornare",
-    "vero festas",
-    "paisagismo",
-    "interiores e decorado",
-    "arquitetura e fachada",
-  ],
-  localização: ["marista", "vistas 360º", "mapas"],
-  imagens: ["áreas comuns", "áreas privativas"],
-  implantação: ["térreo", "lazer"],
-  plantas: ["apartamentos", "penthouses", "compare"],
-  vídeos: [],
-  "ficha técnica": [],
-};
-
-const submenusRoute = [
-  "/institucional",
-  "/assinaturas",
-  "/localizacao",
-  "/imagens",
-  "/implantacao",
-  "/plantas",
-  "/videos",
-  "/fichatecnica",
-];
+import menuStructure from "../utils/menuStructure";
 
 const MenuPage: React.FC = () => {
   const router = useRouter();
   const context = useContextDefault();
-  const sound = context?.sound;
-  const setSound = context ? context.toggleSound : () => {};
-  const setSubmenuAndSelected = context ? context.setSubmenuAndSelected : () => {};
+  const setSubmenuAndSelected = context
+    ? context.setSubmenuAndSelected
+    : () => {};
 
   return (
-    <div className="w-full h-screen flex justify-evenly bg-background">
-      <div className="w-full h-full flex flex-col justify-center items-center">
-        <div className="grid grid-cols-2 grid-rows-3 justify-start items-start h-[50%] gap-x-[8vh] p-20 gap-y-[12vh]">
-          {Object.keys(menu).map((item, index) => (
-            <button
-              className="grow text-menuText text-[1vw] font-aktiv border border-spacing-4 border-[#B29A83] rounded-none p-3 tracking-[0.5vw] animate-fade-up animate-duration-[2000ms]"
-              key={item}
-              onClick={() => {
-                router.push(submenusRoute[index]);
-                setSubmenuAndSelected(menu[item][0], submenusRoute[index]);
-              }}
-            >
-              {item.toUpperCase()}
-            </button>
-          ))}
+    <div className="w-full h-screen bg-background grid grid-cols-12 py-16 gap-x-10">
+      <div className="col-span-8 bg-foreground w-full h-full rounded-r-3xl bg-[url(/menu-inicial/fundo-esquerda.png)] bg-cover bg-center bg-no-repeat flex flex-col p-20 items-center">
+      <div className="imagem-logo grow h-auto w-[80%]">
+        <div className="w-full h-full relative">
+          <Image src="/logo-altez.svg" alt="Logo" fill />
         </div>
       </div>
-      <div className="absolute bottom-0 right-0 flex gap-2 desktop:right-32 animate-fade">
-        <div className="relative w-[8vw] h-[8vw] max-w-[50px]">
-          <Image
-          className="cursor-pointer"
-          src="/btn-home.svg"
-          alt="botão para voltar a tela inicial"
+      <div className="menu grow-[2] grid grid-cols-2 grid-rows- gap-x-20 justify-center items-center w-[60%]">
+        {menuStructure.map((item, index) => (
+          <div key={index} className={` ${item.title == "INFORMAÇÕES" ? "place-self-center col-span-2 min-w-[450px]" : "col-span-1"}`}>
+            <button
+              key={index}
+              onClick={() => {
+                setSubmenuAndSelected(item.submenu[0], item.caminho);
+                router.push(item.caminho);
+              }}
+              className={` hover:bg-[#EAE6DA]/30
+               border-2 relative flex items-center justify-between w-full rounded-lg shadow-md overflow-hidden h-12 row-span-1`}
+            >
+              {/* Ícone de fundo esquerdo */}
+              <div className="absolute inset-y-0 left-0 w-12 h-full">
+                <Image
+                  src="/menu/grafismo-menu.svg"
+                  alt="Decoração esquerda"
+                  fill
+                  className="object-fill"
+                />
+              </div>
+
+              {/* Texto */}
+              <span className="text-2xl tracking-wide ml-11 my-1 grow desktop:text-xl text-[#E2DED2]">
+                {item.title}
+              </span>
+
+              {/* Linha separadora */}
+              <div
+                className="w-[2px] h-full m-0 bg-[#E2DED2]"
+              ></div>
+
+              {/* Ícone Direito */}
+              <Image
+                src={`/menu${item.caminho}.svg`}
+              
+                alt="Ícone de localização"
+                className="mx-4"
+                width={24}
+                height={24}
+              />
+            </button>
+            </div>
+          ))}
+      </div>
+          <Image src="/menu-inicial/logos-incorporadora.png" alt="Logo" 
+          width={400}
+          height={800} />
+      </div>
+      <div className="col-span-4 bg-black w-full h-full rounded-l-3xl relative overflow-hidden">
+        <Image
+          src="/menu-inicial/imagem-menu.png"
+          alt="Menu"
           fill
-          priority
-          onClick={() => router.push("/")}
+          className="object-cover"
         />
-        </div>
-        <div className="relative w-[8vw] h-[8vw] max-w-[50px]">
-          <Image
-          className="cursor-pointer"
-          src={`${sound ? "/btn-som-ativo.svg" : "/btn-som-desativado.svg"}`}
-          alt="botão para ativar ou desativar som"
-          fill
-          onClick={() => setSound()}
-        />
-        </div>
       </div>
     </div>
   );
