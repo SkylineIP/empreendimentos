@@ -73,12 +73,14 @@
 
 .font-inter {
   font-family: 'InterTight', sans-serif;
+  font-stretch: ultra-condensed;
 }
 
-.font-instrument {
-  font-family: 'InstrumentSerif-Regular', 'InstrumentSerif-Italic';
-}
 
 button:disabled {
   opacity: 0.5;
+}
+
+.sctretj {
+  font-stretch: expanded;
 }

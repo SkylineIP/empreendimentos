@@ -19,6 +19,9 @@ export default {
       gridTemplateColumns: {
         24: "repeat(24, minmax(0, 1fr))", // Define um grid de 24 colunas
       },
+      fontFamily: {
+        minhaFonte: ['InstrumentSerif-Regular', 'InterTight'],
+      },
     },
     screens: {
       desktop: { min: "1536px" },  // Estilos para telas maiores que 1536px

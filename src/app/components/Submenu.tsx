@@ -20,7 +20,7 @@ const Submenu: React.FC = memo(function Submenu() {
             arrayOfSubmenu.map((item, index) => (
                 <button
                   key={index}
-                  className={`${submenu == item ? btnPressed : `${btnNormal}`} border-2 relative flex w-96 items-center justify-between rounded-lg shadow-md overflow-hidden h-12 mx-20`}
+                  className={`${submenu == item ? btnPressed : `${btnNormal}`} border-2 relative flex w-96 items-center justify-between rounded-lg shadow-md overflow-hidden h-12 ${indexSelected === 4 ? 'mx-4' : 'mx-20'}`}
                   onClick={ () => {
                     setSubmenuAndSelected(item, selected || '');
                   }}
