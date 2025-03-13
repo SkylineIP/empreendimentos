@@ -5,7 +5,7 @@ const Diferenciais: React.FC = () => {
   const [changeImage, setChangeImage] = useState(true);
   return (
     <div className="row-span-10 p-7">
-      <div className="w-full h-full bg-[#AFA38B] relative  rounded-3xl overflow-hidden">
+      <div className="w-full h-full bg-[#AFA38B] relative  rounded-3xl overflow-hidden" key={`${changeImage}`}>
         <Image
           src={`${changeImage ? "/info/dif-1.png" : "/info/dif-2.png"} `}
           alt="ficha técnica"

@@ -14,7 +14,7 @@ const MenuPage: React.FC = () => {
     : () => {};
 
   return (
-    <div className="w-full h-screen bg-background grid grid-cols-12 py-16 gap-x-10">
+    <div className="w-full h-screen bg-background grid grid-cols-12 py-16 gap-x-10 animate-fade-right animate-duration-[2000ms] ease-in-out">
       <div className="col-span-8 bg-foreground w-full h-full rounded-r-3xl bg-[url(/menu-inicial/fundo-esquerda.png)] bg-cover bg-center bg-no-repeat flex flex-col p-20 items-center">
       <div className="imagem-logo grow h-auto w-[80%]">
         <div className="w-full h-full relative">

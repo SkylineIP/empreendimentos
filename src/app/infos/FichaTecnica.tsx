@@ -3,7 +3,7 @@ import Image from "next/image";
 
 const FichaTecnica: React.FC = () => {
   return (
-    <div className="row-span-10 p-7">
+    <div className="row-span-10 p-7 animate-fade-right animate-duration-[2000ms] ease-in-out" key="ficha-tecnica">
       <div className="w-full h-full bg-[#AFA38B] relative  rounded-3xl overflow-hidden">
         <Image
           src="/info/ficha-tecnica.png"

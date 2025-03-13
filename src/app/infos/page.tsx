@@ -4,7 +4,6 @@ import React from "react";
 import BarraLateral from "../components/BarraLateral";
 import Submenu from "../components/Submenu";
 import { useContextDefault } from "../../context/Context";
-import Image from "next/image";
 import FichaTecnica from "./FichaTecnica";
 import Diferenciais from "./Diferenciais";
 
@@ -13,7 +12,7 @@ const Page: React.FC = () => {
   const openMenu = context?.openMenu;
   const submenu = context?.submenu;
   return (
-    <div className="w-full h-screen bg-primary text-primary grid grid-cols-12 grid-rows-12">
+    <div className={`w-full h-screen bg-primary text-primary grid grid-cols-12 grid-rows-12 ${openMenu ? "animate-fade-left" : "animate-fade-right"} animate-duration-[2000ms] ease-in-out`} key={`${openMenu}`}>
       <BarraLateral />
       <div
         className={`${

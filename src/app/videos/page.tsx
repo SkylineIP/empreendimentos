@@ -54,7 +54,7 @@ const Videos: React.FC = () => {
         <video
         ref={videoRef} // 🔹 Corrigido
           className="w-full h-screen object-cover animate-fade animate-duration-[1000ms] -z-10"
-          src="https://skylineip.s3.sa-east-1.amazonaws.com/Tour+Virtual/OM/bossa+home/media/video_2F3FFF27_95E1_4365_41B1_838A3290693B_pt.mp4" // Substitua pelo caminho do seu vídeo
+          src="" // Substitua pelo caminho do seu vídeo
           onClick={togglePlay}
           playsInline
         ></video>

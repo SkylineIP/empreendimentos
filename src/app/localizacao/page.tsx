@@ -13,7 +13,7 @@ const Localizacao: React.FC = memo(function Localizacao() {
   const openMenu = context?.openMenu;
   const submenu = context?.submenu;
   return (
-    <div className="w-full h-screen bg-primary text-primary grid grid-cols-12 grid-rows-12">
+    <div className={`w-full h-screen bg-primary text-primary grid grid-cols-12 grid-rows-12 ${openMenu ?  'animate-fade-left' : 'animate-fade-right'} `} key={`${openMenu}`}>
       <BarraLateral />
       <div
         className={`${

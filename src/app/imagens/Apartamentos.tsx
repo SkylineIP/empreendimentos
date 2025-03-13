@@ -4,7 +4,7 @@ import React from "react";
 
 const array = Array.from(
   { length: 9 },
-  (_, index) => `/imagens/apt/Miniatura Galeria - ${index}.png`
+  (_, index) => `/imagens/apt/Miniatura-Galeria-${index}.png`
 );
 
 interface Apartamentos {

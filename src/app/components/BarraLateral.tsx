@@ -45,6 +45,7 @@ const BarraLateral: React.FC = memo(function BarraLateral() {
                 router.push(item.caminho);
                 //setIsOpen(false);
               }}
+              disabled={item.title == "VÍDEOS"}
               className={`${
                 selected == item.caminho
                   ? btnPressed
@@ -99,6 +100,7 @@ const BarraLateral: React.FC = memo(function BarraLateral() {
                 router.push(item.caminho);
                 //setIsOpen(false);
               }}
+              disabled={item.title == "VÍDEOS"}
               className={`${
                 selected == item.caminho
                   ? btnPressed
@@ -129,6 +131,7 @@ const BarraLateral: React.FC = memo(function BarraLateral() {
             alt="Ícone de saída"
             width={80}
             height={90}
+            className=" desktopmini:hidden"
           />
         </button>
         <button onClick={() => router.push("/menu")}>

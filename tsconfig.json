@@ -34,7 +34,7 @@
     ".next/types/**/*.ts",
     "next-env.d.ts",
     "dist/types/**/*.ts"
-, ".next/types/app/plantas/page.tsx", ".next/types/app/page.tsx"  ],
+, "main/main.js", "main/preload.js"  ],
   "exclude": [
     "node_modules"
   ]

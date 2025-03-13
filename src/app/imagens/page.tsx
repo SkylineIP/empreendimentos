@@ -10,12 +10,12 @@ import Apartamentos from "./Apartamentos";
 
 const arrayCom32Itens = Array.from(
   { length: 32 },
-  (_, index) => `/imagens/areas-comuns/Miniatura Galeria - ${index + 1}.png`
+  (_, index) => `/imagens/areas-comuns/Miniatura-Galeria-${index + 1}.png`
 );
 
 const arrayCom9Itens = Array.from(
   { length: 9 },
-  (_, index) => `/imagens/apt/Miniatura Galeria - ${index}.png`
+  (_, index) => `/imagens/apt/Miniatura-Galeria-${index}.png`
 );
 
 const arrayLegenda = [
@@ -103,7 +103,7 @@ const Imagens: React.FC = memo(function Localizacao() {
               <div key={imagemAmpliada.imagem} className="relative w-full h-full row-span-8 bg-[url(/imagens/fundo_imagem.png)] bg-cover bg-no-repeat bg-center rounded-3xl animate-fade-up animate-duration-[2000ms]">
                 <Image
                   
-                  src={`/imagens/${categoriaImagens}/Imagem Expandida-${imagemAmpliada.imagem}.png`}
+                  src={`/imagens/${categoriaImagens}/Imagem-Expandida-${imagemAmpliada.imagem}.png`}
                   alt="Imagem ampliada"
                   fill
                   className="object-cover rounded-3xl"

@@ -4,7 +4,7 @@ import React from 'react';
 
 const arrayCom32Itens = Array.from(
     { length: 32 },
-    (_, index) => `/imagens/mini/Miniatura Galeria - ${index + 1}.png`
+    (_, index) => `/imagens/areas-comuns/Miniatura-Galeria-${index + 1}.png`
   );
 
 interface AreasComunsProps {

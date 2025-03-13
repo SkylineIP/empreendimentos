@@ -52,13 +52,13 @@ const arrayLegendaBol2 = [
   "20. APARTAMENTO GARDEN 208 M2",
 ];
 
-const bolotario2 = [1, 2, 3, 9];
+const bolotario2 = [1, 2, 3, 9, 20];
 
 const Implantacao: React.FC = function Implantacao() {
   const [imageDestaque, setImageDestaque] = useState(1);
   const [changeType, setType] = useState("Térreo");
   return (
-    <div className="w-full h-full flex justify-between items-center p-20 relative">
+    <div className="w-full h-full flex justify-between items-center p-20 relative animate-fade" key={`${changeType}`}>
       <div className="div-1 grow h-full flex flex-col items-left justify-evenly mt-20 pt-40 text-sm">
         {(changeType === "Térreo" ? arrayLegendaBol : arrayLegendaBol2).map(
           (item, index) => (
@@ -117,9 +117,9 @@ const Implantacao: React.FC = function Implantacao() {
                 className={`w-full p-2 px-10 rounded-lg  ${
                   changeType === "Térreo"
                     ? "bg-background text-foreground border-2 border-foreground"
-                    : "border-2 border-foreground bg-foreground text-background"
+                    : "bg-background text-foreground border-2 border-foreground "
                 }`}
-                onClick={() => setType("Térreo")}
+                onClick={() => {setType("Térreo"); setImageDestaque(1)}}
               >
                 TÉRREO
               </button>
@@ -127,9 +127,9 @@ const Implantacao: React.FC = function Implantacao() {
                 className={`w-full p-2 px-10 rounded-lg  ${
                   changeType === "Mezanino"
                     ? "bg-background text-foreground border-2 border-foreground"
-                    : "border-2 border-foreground bg-foreground text-background"
+                    : "bg-background text-foreground border-2 border-foreground "
                 }`}
-                onClick={() => setType("Mezanino")}
+                onClick={() => {setType("Mezanino"); setImageDestaque(4)}}
               >
                 MEZANINO
               </button>
@@ -143,10 +143,10 @@ const Implantacao: React.FC = function Implantacao() {
             )
               ? "opacity-100"
               : "opacity-0"
-          } mr-32 absolute right-0`}
-          src={`/projeto/implantacao/Imagem Bolotário ${changeType} - ${imageDestaque}.png`}
+          } mr-32 absolute right-0 bottom-0`}
+          src={`/projeto/implantacao/Imagem-Bolotário-${changeType}-${imageDestaque}.png`}
           alt="toque nas legendas"
-          width={220}
+          width={280}
           height={220}
         />
       </div>
