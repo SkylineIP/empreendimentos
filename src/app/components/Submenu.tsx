@@ -15,12 +15,12 @@ const Submenu: React.FC = memo(function Submenu() {
     const btnPressed = 'bg-[#AFA38B] text-[#1E1E1E]  border-[#1E1E1E]';
     const btnNormal = 'bg-[#1E1E1E] text-[#AFA38B] border-2';
     return (
-        <div className="bg-[#AFA38B] row-span-2 ml-6 mt-6 flex justify-center items-center">
+        <div className="bg-[#AFA38B] row-span-2  ml-6 mt-6 flex justify-center items-center">
           {
             arrayOfSubmenu.map((item, index) => (
                 <button
                   key={index}
-                  className={`${submenu == item ? btnPressed : `${btnNormal}`} border-2 relative flex w-96 items-center justify-between rounded-lg shadow-md overflow-hidden h-12 ${indexSelected === 4 ? 'mx-4' : 'mx-20'}`}
+                  className={`${submenu == item ? btnPressed : `${btnNormal}`} border-2 relative flex desktop:w-96 items-center justify-between rounded-lg shadow-md overflow-hidden h-12 ${indexSelected === 4 ? 'mx-4' : 'desktop:mx-20 mx-4'}`}
                   onClick={ () => {
                     setSubmenuAndSelected(item, selected || '');
                   }}
@@ -37,7 +37,7 @@ const Submenu: React.FC = memo(function Submenu() {
                   </div>
     
                   {/* Texto */}
-                  <span className="text-2xl tracking-wide ml-11 my-1 grow desktop:text-xl">
+                  <span className="text-sm tracking-wide ml-11 my-1 grow desktop:text-xl p-4 desktop:p-0">
                     {item}
                   </span>
     

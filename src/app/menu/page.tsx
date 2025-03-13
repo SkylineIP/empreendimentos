@@ -21,7 +21,7 @@ const MenuPage: React.FC = () => {
           <Image src="/logo-altez.svg" alt="Logo" fill />
         </div>
       </div>
-      <div className="menu grow-[2] grid grid-cols-2 grid-rows- gap-x-20 justify-center items-center w-[60%]">
+      <div className="menu grow-[2] grid grid-cols-2  desktop:gap-x-20 gap-x-12 justify-center items-center desktop:w-[60%]">
         {menuStructure.map((item, index) => (
           <div key={index} className={` ${item.title == "INFORMAÇÕES" ? "place-self-center col-span-2 min-w-[450px]" : "col-span-1"}`}>
             <button
@@ -44,7 +44,7 @@ const MenuPage: React.FC = () => {
               </div>
 
               {/* Texto */}
-              <span className="text-2xl tracking-wide ml-11 my-1 grow desktop:text-xl text-[#E2DED2]">
+              <span className="text-sm tracking-wide ml-11 my-1 grow desktop:text-xl text-[#E2DED2] p-2">
                 {item.title}
               </span>
 

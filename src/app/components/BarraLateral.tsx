@@ -67,7 +67,7 @@ const BarraLateral: React.FC = memo(function BarraLateral() {
               </div>
 
               {/* Texto */}
-              <span className="text-2xl tracking-wide ml-11 my-1 grow desktop:text-xl">
+              <span className="tracking-wide ml-11 my-1 grow desktop:text-xl">
                 {item.title}
               </span>
 
@@ -131,7 +131,7 @@ const BarraLateral: React.FC = memo(function BarraLateral() {
             alt="Ícone de saída"
             width={80}
             height={90}
-            className=" desktopmini:hidden"
+            className=" hidden"
           />
         </button>
         <button onClick={() => router.push("/menu")}>

@@ -33,7 +33,7 @@ const Plantas: React.FC = () => {
             height={400}
             className="object-contain animate-fade animate-duration-[2000ms] animate-ease-in-out"
           />
-        <div className="flex flex-col justify-between overflow-y-auto custom-scrollbar w-3/4 h-full pr-12 ">
+        <div className="flex flex-col justify-between overflow-y-auto custom-scrollbar w-3/4 h-full pr-12">
           {arrayNomesBotoes.map((item, index) => (
             <div key={index} className="flex flex-col justify-between flex-wrap h-full w-full gap-y-8 mt-8">
               <button className={`flex items-center justify-center h-14 p-2 rounded-lg text-2xl ${index === btnPressed ? btnPlantasPressed : btnPlantas}`} onClick={() => {
@@ -45,7 +45,7 @@ const Plantas: React.FC = () => {
                 <p>{item.title}</p>
               </button>
               {(btnPressed === index && item.subBtn.length > 0) && (
-                <div className="grid grid-cols-2 gap-4 flex-wrap justify-center items-center gap-y-8 animate-fade-up animate-duration-[2000ms] animate-ease-in-out" key={`${item.title}`}>
+                <div className="grid grid-cols-2 gap-4  gap-y-8 animate-fade-up animate-duration-[2000ms] animate-ease-in-out " key={`${item.title}`}>
                 {item.subBtn &&
                   item.subBtn.map((sub, i) => (
                     <button

@@ -3,7 +3,7 @@ const menuStructure = [
     { title: "IMAGENS", submenu: ['ÁREAS COMUNS', 'APARTAMENTOS', 'TOUR VIRTUAL'], caminho: "/imagens" },
     { title: "PROJETO", submenu: ['IMPLANTAÇÃO', 'PLANTAS', 'COMPARE'], caminho: "/projeto" },
     { title: "VÍDEOS", submenu: [''], caminho: "/videos" },
-    { title: "INFORMAÇÕES", submenu: ['FICHA TÉCNICA', 'DIFERENCIAIS', 'INSTITUCIONAL', 'PROJETISTAS'], caminho: "/infos" },
+    { title: "INFORMAÇÕES", submenu: ['FICHA TÉCNICA', 'DIFERENCIAIS', 'INSTITUCIONAL'], caminho: "/infos" },
   ];
 
 export default menuStructure;

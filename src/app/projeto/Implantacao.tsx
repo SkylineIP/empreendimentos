@@ -59,7 +59,7 @@ const Implantacao: React.FC = function Implantacao() {
   const [changeType, setType] = useState("Térreo");
   return (
     <div className="w-full h-full flex justify-between items-center p-20 relative animate-fade" key={`${changeType}`}>
-      <div className="div-1 grow h-full flex flex-col items-left justify-evenly mt-20 pt-40 text-sm">
+      <div className="div-1 grow h-full flex flex-col items-left justify-evenly desktop:mt-20 desktop:pt-40 text-sm">
         {(changeType === "Térreo" ? arrayLegendaBol : arrayLegendaBol2).map(
           (item, index) => (
             <button
@@ -156,6 +156,7 @@ const Implantacao: React.FC = function Implantacao() {
         className="mr-12 absolute top-80 left-96"
         width={220}
         height={220}
+        sizes="100vw"
       />
     </div>
   );

@@ -12,7 +12,7 @@ const Diferenciais: React.FC = () => {
           fill
           className="object-fill object-top"
         />
-        <div className="absolute bottom-8 right-[50%] translate-x-1/2 p-2 gap-8 flex justify-center">
+        <div className="absolute bottom-2 right-[50%] translate-x-1/2 p-2 gap-8 flex justify-center">
           <button onClick={() => setChangeImage(true)}>
             <Image
               src="/info/seta-esquerda.png"
