@@ -3,8 +3,6 @@ import "./globals.css";
 import React from "react";
 import { ContextDefault } from "../context/Context";
 
-import BackgroundMusic from "./components/BackgroundMusix";
-
 import ThemeRegistry from "./materialUITheme";
 
 export const metadata: Metadata = {
@@ -23,7 +21,6 @@ export default function RootLayout({
         <React.StrictMode>
           <ContextDefault>
             <ThemeRegistry>{children}</ThemeRegistry>
-            <BackgroundMusic />
             {/* preciso colocar a barra lateral aqui, porque ela aparece em todas as telas, menos na rota '/' e na rota '/menu'*/}
           </ContextDefault>
         </React.StrictMode>
