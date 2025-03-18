@@ -131,7 +131,7 @@ const BarraLateral: React.FC = memo(function BarraLateral() {
             alt="Ícone de saída"
             width={80}
             height={90}
-            className=" hidden"
+            className="hidden desktop:block"
           />
         </button>
         <button onClick={() => router.push("/menu")}>
