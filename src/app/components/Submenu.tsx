@@ -23,7 +23,7 @@ const Submenu: React.FC = memo(function Submenu() {
           key={index}
           className={`${
             submenu == item ? btnPressed : `${btnNormal}`
-          } border-2 relative flex desktop:w-96 items-center justify-between rounded-lg shadow-md overflow-hidden h-12 ${
+          } border-2 relative flex w-80 items-center justify-between rounded-lg shadow-md overflow-hidden h-12 ${
             indexSelected === 4 ? "mx-4" : "desktop:mx-20 mx-4"
           }`}
           onClick={() => {
