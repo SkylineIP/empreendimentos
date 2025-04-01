@@ -21,7 +21,8 @@ const MenuPage: React.FC = () => {
           <Image src="/logo-altez.svg" alt="Logo" fill />
         </div>
       </div>
-      <div className="menu grow-[2] grid grid-cols-2  desktop:gap-x-20 gap-x-12 justify-center items-center desktop:w-[60%]">
+      <div className="menu grow-[2] grid grid-cols-2  desktop:gap-x-20 gap-x-12 justify-center items-center desktop:w-[7
+      0%]">
         {menuStructure.map((item, index) => (
           <div key={index} className={` ${item.title == "INFORMAÇÕES" ? "place-self-center col-span-2 min-w-[450px]" : "col-span-1"}`}>
             <button

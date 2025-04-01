@@ -58,8 +58,8 @@ const Implantacao: React.FC = function Implantacao() {
   const [imageDestaque, setImageDestaque] = useState(1);
   const [changeType, setType] = useState("Térreo");
   return (
-    <div className="w-full h-full flex justify-between items-center p-20 relative animate-fade" key={`${changeType}`}>
-      <div className="div-1 grow h-full flex flex-col items-left justify-evenly desktop:mt-20 desktop:pt-40 text-sm">
+    <div className="w-full h-full flex justify-between items-center p-2 desktop:p-20 relative animate-fade" key={`${changeType}`}>
+      <div className="div-1 grow h-full flex flex-col items-left justify-evenly max-h-[1000px] text-sm overflow-y-auto">
         {(changeType === "Térreo" ? arrayLegendaBol : arrayLegendaBol2).map(
           (item, index) => (
             <button
@@ -100,24 +100,25 @@ const Implantacao: React.FC = function Implantacao() {
           }`}
           alt="implantacao"
           fill
-          className="object-contain p-12"
+          className="object-contain p-32"
         />
       </div>
       <div className="absolute -bottom-16 right-0 -translate-y-1/2 flex justify-center items-center w-3/4 gap-x-32">
         <div className="flex flex-col justify-start items-start w-full gap-y-4 h-full">
-          <div className="relative h-full">
+          <div className="relative h-full max-h-[40%]">
             <Image
               src="/projeto/implantacao/IMPLANTAÇÃO.png"
               alt="Térreo"
               width={800}
+              className="desktop:block hidden"
               height={200}
             />
-            <div className="flex gap-8 h-full w-full">
+            <div className="flex gap-8 w-full">
               <button
                 className={`w-full p-2 px-10 rounded-lg  ${
                   changeType === "Térreo"
                     ? "bg-background text-foreground border-2 border-foreground"
-                    : "bg-background text-foreground border-2 border-foreground "
+                    : "bg-foreground text-background border-2 border-background "
                 }`}
                 onClick={() => {setType("Térreo"); setImageDestaque(1)}}
               >
@@ -127,7 +128,7 @@ const Implantacao: React.FC = function Implantacao() {
                 className={`w-full p-2 px-10 rounded-lg  ${
                   changeType === "Mezanino"
                     ? "bg-background text-foreground border-2 border-foreground"
-                    : "bg-background text-foreground border-2 border-foreground "
+                    : "bg-foreground text-background border-2 border-background "
                 }`}
                 onClick={() => {setType("Mezanino"); setImageDestaque(4)}}
               >
@@ -136,27 +137,28 @@ const Implantacao: React.FC = function Implantacao() {
             </div>
           </div>
         </div>
-        <Image
+        <div className="w-48 h-48 absolute right-32 bottom-0">
+          <Image
           className={`${
             !(changeType === "Térreo" ? bolotario : bolotario2).some(
               (value) => value === imageDestaque
             )
               ? "opacity-100"
               : "opacity-0"
-          } mr-32 absolute right-0 bottom-0`}
+          } mr-32`}
           src={`/projeto/implantacao/Imagem-Bolotário-${changeType}-${imageDestaque}.png`}
-          alt="toque nas legendas"
-          width={280}
-          height={220}
+          alt="destaque"
+          fill
         />
+        </div>
+        
       </div>
       <Image
         src="/projeto/implantacao/toque-nas-legendas.svg"
         alt="toque nas legendas"
-        className="mr-12 absolute top-80 left-96"
+          className="mr-12 absolute top-80 left-[32%] hidden desktop:block"
         width={220}
         height={220}
-        sizes="100vw"
       />
     </div>
   );

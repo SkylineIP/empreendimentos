@@ -34,7 +34,8 @@ const GoogleMap = () => {
         zoomControlOptions: {
           position: google.maps.ControlPosition.LEFT_BOTTOM,
         },
-        mapTypeId: submenu === "MAPA 2D" ? "roadmap" : google.maps.MapTypeId.HYBRID,
+        mapTypeId:
+          submenu === "MAPA 2D" ? "roadmap" : google.maps.MapTypeId.HYBRID,
       });
 
       // Adiciona um marcador personalizado
@@ -55,17 +56,14 @@ const GoogleMap = () => {
     loadGoogleMaps();
   }, []);
 
-
-
   useEffect(() => {
     map?.setMapTypeId(isSatellite ? "roadmap" : google.maps.MapTypeId.HYBRID);
-    if(submenu === "MAPA 2D") {
+    if (submenu === "MAPA 2D") {
       setIsSatellite(false);
     } else {
       setIsSatellite(true);
     }
-  }
-  , [submenu]);
+  }, [submenu]);
 
   return (
     <div className="relative w-full h-full">

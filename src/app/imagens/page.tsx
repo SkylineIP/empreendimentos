@@ -112,12 +112,12 @@ const Imagens: React.FC = memo(function Localizacao() {
                 {categoriaImagens == "areas-comuns" ? arrayLegenda[imagemAmpliada.imagem] : arrayLegenda1[imagemAmpliada.imagem]}
                 </p>
               </div>
-              <div className="w-full row-span-2 overflow-x-auto overflow-y-hidden snap-x snap-mandatory flex flex-col custom-scrollbar rounded-3xl">
-                <div className="flex min-w-max">
+              <div className="w-full row-span-2 overflow-x-auto overflow-y-hidden flex flex-col custom-scrollbar rounded-3xl p-2">
+                <div className="flex min-w-max gap-8">
                   {arrayDasImagens.map((item, i) => (
                     <button
                       key={item}
-                      className="rounded-lg p-4 snap-start fade-in-20 animate-fade-up animate-duration-[2000ms]"
+                      className="rounded-lg p-4 snap-start fade-in-20 animate-fade-up animate-duration-[2000ms] desktop:w-56 desktop:h-40 h-28 w-28"
                       onClick={() =>
                         setImagemAmpliada({ open: true, imagem: i })
                       }
@@ -125,8 +125,7 @@ const Imagens: React.FC = memo(function Localizacao() {
                       <Image
                         src={item}
                         alt={`Miniatura ${item}`}
-                        width={200}
-                        height={100}
+                        fill
                         className="object-contain"
                       />
                     </button>

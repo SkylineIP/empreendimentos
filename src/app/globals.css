@@ -7,6 +7,7 @@
   --foreground: #896337;
   --menu: #AFA38B;
   --menuText: #1E1E1E;
+  user-select: none;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -16,6 +17,13 @@
     --menu: #AFA38B;
     --menuText: #E2DED2;
   }
+}
+
+p, h1, h2, h3, h4 {
+  user-select: text;
+}
+::selection {
+  background-color: rgba(137, 125, 123, 0.4)
 }
 
 @layer utilities {

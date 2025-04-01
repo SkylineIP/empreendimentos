@@ -14,7 +14,7 @@ const BarraLateral: React.FC = memo(function BarraLateral() {
   const context = useContextDefault();
   const selected = context?.selected;
   const openMenu = context?.openMenu;
-  const setOpenMenu = context?.setOpenMenu;
+  // const setOpenMenu = context?.setOpenMenu;
   const setSubmenuAndSelected = context
     ? context.setSubmenuAndSelected
     : () => {};
@@ -125,7 +125,7 @@ const BarraLateral: React.FC = memo(function BarraLateral() {
           openMenu ? "flex-col" : "flex-row"
         }`}
       >
-        <button onClick={() => setOpenMenu && setOpenMenu(!openMenu)}>
+        {/* <button onClick={() => setOpenMenu && setOpenMenu(!openMenu)}>
           <Image
             src={`${openMenu ? "/menu/max.svg" : "/menu/max-pressed.svg"}`}
             alt="Ícone de saída"
@@ -133,7 +133,7 @@ const BarraLateral: React.FC = memo(function BarraLateral() {
             height={90}
             className="hidden desktop:block"
           />
-        </button>
+        </button> */}
         <button onClick={() => router.push("/menu")}>
           <Image
             src="/menu/home.svg"

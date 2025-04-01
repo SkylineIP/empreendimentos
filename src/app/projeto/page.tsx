@@ -25,7 +25,7 @@ const Page: React.FC = () => {
           openMenu ? "col-span-11" : "col-span-9"
         } row-span-12 grid grid-rows-12`}
       >
-        <div className="row-span-10">
+        <div className="row-span-10 flex">
             {submenu === "IMPLANTAÇÃO" && <Implantacao />}
             {submenu === "PLANTAS" && <Plantas />}
             {submenu === "COMPARE" && <Compare />}
