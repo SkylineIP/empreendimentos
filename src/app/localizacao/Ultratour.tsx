@@ -5,7 +5,7 @@ const Ultratour: React.FC = () => {
     <div>
       <iframe
         src="https://skylineip.s3.sa-east-1.amazonaws.com/Tour+Virtual/dresden/altez/index-tela.htm"
-        className="w-full h-screen"
+        className="w-full h-screen relative"
         title="ultratour"
       ></iframe>
     </div>

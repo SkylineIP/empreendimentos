@@ -79,6 +79,7 @@ const MenuPage: React.FC = () => {
           className="object-cover"
         />
       </div>
+      <Image src="/voltar-descanso.svg" width={50} height={50} alt="Voltar" className="absolute bottom-4 left-4 cursor-pointer" onClick={() => router.push("/")} />
     </div>
   );
 };

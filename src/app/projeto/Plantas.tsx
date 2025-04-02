@@ -50,7 +50,7 @@ const Plantas: React.FC = () => {
                   item.subBtn.map((sub, i) => (
                     <button
                       key={sub.title + i}
-                      className={`flex items-center justify-center p-1 rounded-lg w-full text-lg px-10 ${i === btnSubmenuPressed ? btnSubmenuPlantasPressed : btnSubmenuPlantas}`}
+                      className={`flex items-center justify-center p-1 rounded-lg w-full text-sm px-10 ${i === btnSubmenuPressed ? btnSubmenuPlantasPressed : btnSubmenuPlantas}`}
                       onClick={() => {
                         setSubmenuPressed(i); 
                         setPlantaSelected(sub.caminho);
