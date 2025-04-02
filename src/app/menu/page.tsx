@@ -27,6 +27,7 @@ const MenuPage: React.FC = () => {
           <div key={index} className={` ${item.title == "INFORMAÇÕES" ? "place-self-center col-span-2 min-w-[450px]" : "col-span-1"}`}>
             <button
               key={index}
+              disabled={item.title === "VÍDEOS"}
               onClick={() => {
                 setSubmenuAndSelected(item.submenu[0], item.caminho);
                 router.push(item.caminho);

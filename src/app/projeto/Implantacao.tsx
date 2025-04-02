@@ -120,7 +120,7 @@ const ImplantacaoTests: React.FC = () => {
             fill
             className="object-contain p-4"
           />
-          <Image src="/menu/max.svg" alt="expandir imagem" width={30} height={30} className="absolute bottom-16 right-40 cursor-pointer" onClick={() => setAbrir?.({ open: true, pathImage: `${
+          <Image src="/menu/max.svg" alt="expandir imagem" width={50} height={50} className="absolute bottom-16 right-20 cursor-pointer" onClick={() => setAbrir?.({ open: true, pathImage: `${
               changeType === "Térreo"
                 ? "/projeto/implantacao/planta1.png"
                 : "/projeto/implantacao/planta2.png"
