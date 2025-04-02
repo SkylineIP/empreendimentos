@@ -117,7 +117,7 @@ const Imagens: React.FC = memo(function Localizacao() {
                   {arrayDasImagens.map((item, i) => (
                     <button
                       key={item}
-                      className="rounded-lg p-4 snap-start fade-in-20 animate-fade-up animate-duration-[2000ms] desktop:w-56 desktop:h-40 h-28 w-28"
+                      className="rounded-lg p-4 snap-start fade-in-20 animate-fade-up animate-duration-[2000ms] desktop:w-32 desktop:h-40 h-28 w-28 flex justify-start items-start"
                       onClick={() =>
                         setImagemAmpliada({ open: true, imagem: i })
                       }
@@ -126,7 +126,7 @@ const Imagens: React.FC = memo(function Localizacao() {
                         src={item}
                         alt={`Miniatura ${item}`}
                         fill
-                        className="object-contain"
+                        className="object-contain object-top"
                       />
                     </button>
                   ))}

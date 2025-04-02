@@ -8,7 +8,9 @@ const array = Array.from(
 );
 
 interface Apartamentos {
-    setImagemAmpliada: React.Dispatch<React.SetStateAction<{ open: boolean; imagem: number }>>;
+  setImagemAmpliada: React.Dispatch<
+    React.SetStateAction<{ open: boolean; imagem: number }>
+  >;
 }
 
 const Apartamentos: React.FC<Apartamentos> = ({ setImagemAmpliada }) => {
