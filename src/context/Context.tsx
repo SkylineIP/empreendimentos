@@ -12,6 +12,8 @@ export interface Context {
   setSubmenuAndSelected: (submenu: string, selected: string) => void;
   openMenu: boolean;
   setOpenMenu: (open: boolean) => void;
+  abrirImagensTelaCheia: { open: boolean; pathImage: string };
+  setAbrirImagensTelaCheia: (abrir: { open: boolean; pathImage: string }) => void;
 }
 
 // Criando o contexto com um valor inicial opcional
@@ -29,6 +31,7 @@ export const ContextDefault = ({ children }: { children: ReactNode }) => {
 
   const [menu, setMenu] = useState({ submenu: arrayOfSubmenu, selected: currenthPath });
   const [openMenu, setOpenMenu] = useState(true);
+  const [abrirImagensTelaCheia, setAbrirImagensTelaCheia] = useState({open: false, pathImage: ""});
   const toggleSound = () => {
     setSound(!sound);
   };
@@ -47,6 +50,8 @@ export const ContextDefault = ({ children }: { children: ReactNode }) => {
       setSubmenuAndSelected,
       openMenu,
       setOpenMenu,
+      abrirImagensTelaCheia,
+      setAbrirImagensTelaCheia,
     }}>
       {children}
     </ContextDef.Provider>

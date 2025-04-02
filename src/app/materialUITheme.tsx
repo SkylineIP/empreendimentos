@@ -5,6 +5,9 @@ import { createTheme } from "@mui/material/styles";
 import useOrientation from "./components/verificaOrientacao";
 import { usePathname } from "next/navigation";
 import LoadingOverlay from "./components/Loading";
+import { ThemeProvider } from "@mui/material/styles";
+import { useContextDefault } from "@/context/Context";
+import TelaCheia from "./components/TelaCheia";
 
 //configurar tema
 //cores e fontes
@@ -28,9 +31,6 @@ const theme = createTheme({
     fontFamily: `"InterTight", "InstrumentSerif-Regular", "InstrumentSerif-Italic",`,
   },
 });
-
-import { ThemeProvider } from "@mui/material/styles";
-
 const OrientationWarning = () => (
   <div className="flex flex-col items-center justify-center h-screen background text-primary ">
     <h1 className="text-2xl font-bold mb-4">Modo Paisagem Necessário</h1>
@@ -44,6 +44,8 @@ export default function ThemeRegistry({ children }: { children: React.ReactNode 
   const [loading, setLoading] = useState(false);
   const pathname = usePathname();
   const isLandscape = useOrientation();
+  const context = useContextDefault();
+  const abrirImagensTelaCheia = context?.abrirImagensTelaCheia;
   useEffect(() => {
     setLoading(true); // Ativa o loading
     const timer = setTimeout(() => {
@@ -57,6 +59,7 @@ export default function ThemeRegistry({ children }: { children: React.ReactNode 
       {loading && <LoadingOverlay />}
       {/* pathname === '/' || pathname === '/menu' ? '' : <BarraLateral /> */}
       {isLandscape ? children : <OrientationWarning />}
+      {abrirImagensTelaCheia?.open && (<TelaCheia />)}
     </ThemeProvider>
   );
 }

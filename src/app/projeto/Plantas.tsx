@@ -1,5 +1,6 @@
 import React, { useState }  from "react";
 import Image from "next/image";
+import { useContextDefault } from "@/context/Context";
 
 const arrayNomesBotoes = [
   { title: "101 M²", subBtn: [{title: "PADRÃO", caminho: '101m-padrao', legenda: 'legenda-1'}, {title: "OPÇÃO 1", caminho: '101m-opcao1' , legenda: 'legenda-2'}, {title: "TOUR VIRTUAL", caminho: '101m-tour', legenda: 'legenda-3' }], caminho: "101m-padrao", legenda: 'legenda-1' },
@@ -22,6 +23,8 @@ const Plantas: React.FC = () => {
   const [btnSubmenuPressed, setSubmenuPressed] = useState(0);
   const [plantaSelected, setPlantaSelected] = useState('101m-padrao');
   const [legendaPlantas, setLegendaPlantas] = useState('legenda-1');
+  const context = useContextDefault();
+    const setAbrir = context?.setAbrirImagensTelaCheia;
   return (
     <div className="w-full h-full grid grid-cols-12 grid-rows-12 items-center pb-0 pr-0 relative overflow-hidden">
       <div className="w-full h-full col-span-12 row-span-2"></div>
@@ -75,6 +78,7 @@ const Plantas: React.FC = () => {
           fill
           className="object-contain p-10 pl-0"
         />
+        <Image src="/menu/max.svg" alt="expandir imagem" width={30} height={30} className="absolute bottom-16 right-20 cursor-pointer" onClick={() => setAbrir?.({ open: true, pathImage: `/projeto/plantas/${plantaSelected}.png` })}/>
       </div>
     </div>
   );

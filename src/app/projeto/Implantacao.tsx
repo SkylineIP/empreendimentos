@@ -1,6 +1,7 @@
 import Image from "next/image";
 import React, { useState } from "react";
 import ImagemAmpliadaDoBolotario from "./ImagemAmpliada";
+import { useContextDefault } from "@/context/Context";
 
 const arrayLegendaBol = [
   "1. LOBBY",
@@ -59,6 +60,8 @@ const ImplantacaoTests: React.FC = () => {
   const [imageDestaque, setImageDestaque] = useState(-1);
   const [changeType, setType] = useState("Térreo");
   const [abrirImagemAmpliada, setAbrirImagemAmpliada] = useState(false);
+  const context = useContextDefault();
+  const setAbrir = context?.setAbrirImagensTelaCheia;
   return (
     <div className="w-full h-full grid grid-cols-12 grid-rows-12">
       {/* imagem do grafismo superior */}
@@ -106,7 +109,7 @@ const ImplantacaoTests: React.FC = () => {
 
       {/* container da implantacao e botões*/}
       <div className="col-span-8 row-span-10 grid grid-rows-12">
-        <div className="w-full h-full relative row-span-9">
+        <div className="w-full h-full relative row-span-9 ">
           <Image
             src={`${
               changeType === "Térreo"
@@ -117,6 +120,11 @@ const ImplantacaoTests: React.FC = () => {
             fill
             className="object-contain p-4"
           />
+          <Image src="/menu/max.svg" alt="expandir imagem" width={30} height={30} className="absolute bottom-16 right-40 cursor-pointer" onClick={() => setAbrir?.({ open: true, pathImage: `${
+              changeType === "Térreo"
+                ? "/projeto/implantacao/planta1.png"
+                : "/projeto/implantacao/planta2.png"
+            }` })}/>
         </div>
         <div className="row-span-3 flex flex-col w-full h-full gap-y-2">
           <div className="w-full h-full relative">
