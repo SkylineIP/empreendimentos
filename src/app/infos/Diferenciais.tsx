@@ -13,7 +13,7 @@ const Diferenciais: React.FC = () => {
           className="object-fill object-top"
         />
         <div className="absolute bottom-2 right-[50%] translate-x-1/2 p-2 gap-8 flex justify-center">
-          <button onClick={() => setChangeImage(true)}>
+          <button onClick={() => setChangeImage(true)} disabled={changeImage}>
             <Image
               src="/info/seta-esquerda.png"
               alt="change"
@@ -22,7 +22,7 @@ const Diferenciais: React.FC = () => {
               className="object-contain object-top"
             />
           </button>
-          <button onClick={() => setChangeImage(false)}>
+          <button onClick={() => setChangeImage(false)} disabled={!changeImage}>
             <Image
               src="/info/seta-direita.png"
               alt="change"
