@@ -1,5 +1,6 @@
-import React, { useState } from "react";
 import Image from "next/image";
+import React, { useState } from "react";
+import ImagemAmpliadaDoBolotario from "./ImagemAmpliada";
 
 const arrayLegendaBol = [
   "1. LOBBY",
@@ -33,7 +34,7 @@ const arrayLegendaBol2 = [
   "1. APARTAMENTO 111 M²",
   "2. APARTAMENTO 129 M²",
   "3. ESPAÇO GOURMET",
-  "4. SALÃO DE FESTAS",
+  "4. SALÃO DE JOGOS",
   "5. BRINQUETODECA",
   "6. PLAYGROUND",
   "7. PRAÇA DO VIOLÃO",
@@ -54,19 +55,31 @@ const arrayLegendaBol2 = [
 
 const bolotario2 = [1, 2, 3, 9, 20];
 
-const Implantacao: React.FC = function Implantacao() {
-  const [imageDestaque, setImageDestaque] = useState(1);
+const ImplantacaoTests: React.FC = () => {
+  const [imageDestaque, setImageDestaque] = useState(-1);
   const [changeType, setType] = useState("Térreo");
+  const [abrirImagemAmpliada, setAbrirImagemAmpliada] = useState(false);
   return (
-    <div className="w-full h-full flex justify-between items-center p-2 desktop:p-20 relative animate-fade" key={`${changeType}`}>
-      <div className="div-1 grow h-full flex flex-col items-left justify-evenly max-h-[1000px] text-sm overflow-y-auto">
+    <div className="w-full h-full grid grid-cols-12 grid-rows-12">
+      {/* imagem do grafismo superior */}
+      <div className="col-span-12 row-span-2 w-full h-full relative">
+        {/* <Image
+          src="/projeto/implantacao/grafismo-Implantacao.svg"
+          alt="grafismo"
+          fill
+          className="object-contain object-right"
+        /> */}
+      </div>
+
+      {/* container das legendas */}
+      <div className="col-span-4 row-span-10 overflow-y-auto custom-scrollbar p-10 m-4">
         {(changeType === "Térreo" ? arrayLegendaBol : arrayLegendaBol2).map(
           (item, index) => (
             <button
               disabled={(changeType === "Térreo" ? bolotario : bolotario2).some(
                 (value) => value === index + 1
               )}
-              className="flex items-center justify-between text-[#1E1F1F] "
+              className="flex items-center justify-between text-[#1E1F1F] text-left"
               key={index}
               onClick={() => {
                 if (
@@ -75,15 +88,14 @@ const Implantacao: React.FC = function Implantacao() {
                   )
                 ) {
                   setImageDestaque(index + 1);
+                  setAbrirImagemAmpliada(true);
                 }
               }}
             >
               <p
-                className={`${
-                  index === imageDestaque - 1
-                    ? "bg-foreground text-background"
-                    : "text-[#1E1F1F]"
-                } p-1 rounded-full px-4`}
+                className={(changeType === "Térreo" ? bolotario : bolotario2).some(
+                    (value) => value === index + 1
+                  ) ? "p-1 rounded-full px-4" : "p-1 rounded-full px-4 hover:bg-foreground hover:text-background"}
               >
                 {item}
               </p>
@@ -91,77 +103,64 @@ const Implantacao: React.FC = function Implantacao() {
           )
         )}
       </div>
-      <div className="div-2 grow-[4] h-full relative">
-        <Image
-          src={`${
-            changeType === "Térreo"
-              ? "/projeto/implantacao/planta1.png"
-              : "/projeto/implantacao/planta2.png"
-          }`}
-          alt="implantacao"
-          fill
-          className="object-contain p-32"
-        />
-      </div>
-      <div className="absolute -bottom-16 right-0 -translate-y-1/2 flex justify-center items-center w-3/4 gap-x-32">
-        <div className="flex flex-col justify-start items-start w-full gap-y-4 h-full">
-          <div className="relative h-full max-h-[40%]">
+
+      {/* container da implantacao e botões*/}
+      <div className="col-span-8 row-span-10 grid grid-rows-12">
+        <div className="w-full h-full relative row-span-9">
+          <Image
+            src={`${
+              changeType === "Térreo"
+                ? "/projeto/implantacao/planta1.png"
+                : "/projeto/implantacao/planta2.png"
+            }`}
+            alt="implantacao"
+            fill
+            className="object-contain p-4"
+          />
+        </div>
+        <div className="row-span-3 flex flex-col w-full h-full gap-y-2">
+          <div className="w-full h-full relative">
             <Image
               src="/projeto/implantacao/IMPLANTAÇÃO.png"
               alt="Térreo"
-              width={800}
-              className="desktop:block hidden"
-              height={200}
+              fill
+              className="object-contain"
             />
-            <div className="flex gap-8 w-full">
-              <button
-                className={`w-full p-2 px-10 rounded-lg  ${
-                  changeType === "Térreo"
-                    ? "bg-background text-foreground border-2 border-foreground"
-                    : "bg-foreground text-background border-2 border-background "
-                }`}
-                onClick={() => {setType("Térreo"); setImageDestaque(1)}}
-              >
-                TÉRREO
-              </button>
-              <button
-                className={`w-full p-2 px-10 rounded-lg  ${
-                  changeType === "Mezanino"
-                    ? "bg-background text-foreground border-2 border-foreground"
-                    : "bg-foreground text-background border-2 border-background "
-                }`}
-                onClick={() => {setType("Mezanino"); setImageDestaque(4)}}
-              >
-                MEZANINO
-              </button>
-            </div>
+          </div>
+          <div className="flex w-full gap-x-8 justify-center">
+            <button
+              className={`w-60 h-8  rounded-lg  ${
+                changeType === "Térreo"
+                  ? "bg-foreground text-background border-2 border-background"
+                  : "bg-background text-foreground border-2 border-foreground"
+              }`}
+              onClick={() => {
+                setType("Térreo");
+                setImageDestaque(-1);
+              }}
+            >
+              TÉRREO
+            </button>
+            <button
+              className={`w-60 h-8 rounded-lg  ${
+                changeType === "Mezanino"
+                  ? "bg-foreground text-background border-2 border-background"
+                  : "bg-background text-foreground border-2 border-foreground"
+              }`}
+              onClick={() => {
+                setType("Mezanino");
+                setImageDestaque(-1);
+              }}
+            >
+              MEZANINO
+            </button>
           </div>
         </div>
-        <div className="w-48 h-48 absolute right-32 bottom-0">
-          <Image
-          className={`${
-            !(changeType === "Térreo" ? bolotario : bolotario2).some(
-              (value) => value === imageDestaque
-            )
-              ? "opacity-100"
-              : "opacity-0"
-          } mr-32`}
-          src={`/projeto/implantacao/Imagem-Bolotário-${changeType}-${imageDestaque}.png`}
-          alt="destaque"
-          fill
-        />
-        </div>
-        
       </div>
-      <Image
-        src="/projeto/implantacao/toque-nas-legendas.svg"
-        alt="toque nas legendas"
-          className="mr-12 absolute top-80 left-[32%] hidden desktop:block"
-        width={220}
-        height={220}
-      />
+      {abrirImagemAmpliada && (<ImagemAmpliadaDoBolotario setImageDestaque={setImageDestaque} setOpenImage={setAbrirImagemAmpliada} legenda={changeType === "Térreo" ? arrayLegendaBol[imageDestaque - 1] : arrayLegendaBol2[imageDestaque - 1]}
+      tipo={changeType} />)}
     </div>
   );
 };
 
-export default Implantacao;
+export default ImplantacaoTests;

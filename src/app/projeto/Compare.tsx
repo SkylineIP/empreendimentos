@@ -30,40 +30,54 @@ const Compare: React.FC = memo(function Compare() {
   const [compareOne, setCompareOne] = useState("/projeto/compare/mais.svg");
   const [compareTwo, setCompareTwo] = useState("/projeto/compare/mais.svg");
   const handlePress = (index: number) => {
-    //validate if the press plant is already the comparision, if it is, take of the compare and unselected them
+
+    //desmarca a planta que está no primeiro compare
     if (pressFirst === index) {
       setpressValidate({ pressOne: false, pressTwo: pressaValidate.pressTwo });
       setPressFirst(0);
       setCompareOne("/projeto/compare/mais.svg");
       return;
     }
+
+    //desmarca a planta que está no segundo compare
     if (pressSecond === index) {
       setpressValidate({ pressOne: pressaValidate.pressOne, pressTwo: false });
       setPressSecond(0);
       setCompareTwo("/projeto/compare/mais.svg");
       return;
     }
-    if (
-      pressaValidate.pressOne === false &&
-      pressaValidate.pressTwo === false
-    ) {
-      setpressValidate({ pressOne: true, pressTwo: false });
-      setPressFirst(index);
-      setCompareOne(`/projeto/compare/plantas-full-${index}.png`);
-    }
-    if (pressaValidate.pressOne === true && pressaValidate.pressTwo === false) {
-      setpressValidate({ pressOne: true, pressTwo: true });
-      setPressSecond(index);
-      setCompareTwo(`/projeto/compare/plantas-full-${index}.png`);
-    }
-    if (pressaValidate.pressOne === true && pressaValidate.pressTwo === true) {
-      setpressValidate({ pressOne: true, pressTwo: false });
-      setPressFirst(index);
-      setCompareOne(`/projeto/compare/plantas-full-${index}.png`);
-      setCompareTwo("/projeto/compare/mais.svg");
-      setPressSecond(0);
-    }
-  };
+
+//se não estiver planta selecionada, preenche o primeiro compare
+if (pressaValidate.pressOne === false && pressaValidate.pressTwo === false) {
+  setpressValidate({ pressOne: true, pressTwo: false });
+  setPressFirst(index);
+  setCompareOne(`/projeto/compare/plantas-full-${index}.png`);
+}
+//se já tiver uma planta selecionada, preenche o segundo compare
+if (pressaValidate.pressOne === true && pressaValidate.pressTwo === false) {
+  setpressValidate({ pressOne: true, pressTwo: true });
+  setPressSecond(index);
+  setCompareTwo(`/projeto/compare/plantas-full-${index}.png`);
+}
+
+//se já tiver uma planta selecionada, preenche o segundo compare
+if (pressaValidate.pressOne === false && pressaValidate.pressTwo === true) {
+  setpressValidate({ pressOne: true, pressTwo: true });
+  setPressFirst(index);
+  setCompareOne(`/projeto/compare/plantas-full-${index}.png`);
+}
+
+//se já tiver duas plantas selecionadas, troca a planta do primeiro compare
+if (pressaValidate.pressOne === true && pressaValidate.pressTwo === true) {
+  setpressValidate({ pressOne: true, pressTwo: false });
+  setPressFirst(index);
+  setCompareOne(`/projeto/compare/plantas-full-${index}.png`);
+  setCompareTwo("/projeto/compare/mais.svg");
+  setPressSecond(0);
+}
+
+
+};
   return (
     <div className="w-full h-full grid grid-rows-12 gap-6 p-12 pb-0 animate-fade animate-duration-[1000ms]">
       <div className="row-span-9 flex w-full h-full gap-x-12">

@@ -7,7 +7,6 @@ import { useContextDefault } from "../../context/Context";
 import Implantacao from "./Implantacao";
 import Plantas from "./Plantas";
 import Compare from "./Compare";
-import ImplantacaoTests from "./ImplantacaoTests";
 
 const Page: React.FC = () => {
   const context = useContextDefault();
@@ -27,7 +26,7 @@ const Page: React.FC = () => {
         } row-span-12 grid grid-rows-12`}
       >
         <div className="row-span-10 flex">
-            {submenu === "IMPLANTAÇÃO" && <ImplantacaoTests />}
+            {submenu === "IMPLANTAÇÃO" && <Implantacao />}
             {submenu === "PLANTAS" && <Plantas />}
             {submenu === "COMPARE" && <Compare />}
         </div>
