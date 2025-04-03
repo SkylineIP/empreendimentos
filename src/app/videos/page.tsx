@@ -3,7 +3,12 @@
 import React from "react";
 import { useRef, useState } from "react";
 import { IconButton } from "@mui/material";
-import {  VolumeOff, VolumeUp, Fullscreen, FullscreenExit } from "@mui/icons-material";
+import {
+  VolumeOff,
+  VolumeUp,
+  Fullscreen,
+  FullscreenExit,
+} from "@mui/icons-material";
 
 const Videos: React.FC = () => {
   const videoRef = useRef<HTMLVideoElement | null>(null); // 🔹 Tipagem corrigida
@@ -12,8 +17,9 @@ const Videos: React.FC = () => {
   const containerRef = useRef<HTMLDivElement | null>(null);
 
   const togglePlay = () => {
-    if (videoRef.current) { // 🔹 Sempre verificar se não é null
-        videoRef.current.play();
+    if (videoRef.current) {
+      // 🔹 Sempre verificar se não é null
+      videoRef.current.play();
     }
   };
 
@@ -27,7 +33,9 @@ const Videos: React.FC = () => {
   const toggleFullscreen = () => {
     if (containerRef.current) {
       if (!document.fullscreenElement) {
-        containerRef.current.requestFullscreen().then(() => setIsFullscreen(true));
+        containerRef.current
+          .requestFullscreen()
+          .then(() => setIsFullscreen(true));
       } else {
         document.exitFullscreen().then(() => setIsFullscreen(false));
       }
@@ -39,26 +47,25 @@ const Videos: React.FC = () => {
       <div className="col-span-2"></div>
       <div ref={containerRef} className="relative col-span-10 w-full h-screen">
         <video
-        ref={videoRef} // 🔹 Corrigido
+          ref={videoRef} // 🔹 Corrigido
           className="w-full h-screen object-cover animate-fade animate-duration-[1000ms] -z-10"
           src="" // Substitua pelo caminho do seu vídeo
           onClick={togglePlay}
           playsInline
         ></video>
         <div className="absolute bottom-2 left-2 right-2 flex items-center justify-between bg-[#B29A83]/70 p-2 mx-12 rounded-lg z-50 border-2 border-[#786a5d] ">
-        {/* Botão Play/Pause */}
-        <div>
+          {/* Botão Play/Pause */}
+          <div>
+            {/* Botão Mute/Unmute */}
+            <IconButton onClick={toggleMute} className="text-white">
+              {muted ? <VolumeOff /> : <VolumeUp />}
+            </IconButton>
+          </div>
 
-        {/* Botão Mute/Unmute */}
-        <IconButton onClick={toggleMute} className="text-white">
-          {muted ? <VolumeOff /> : <VolumeUp />}
-        </IconButton>
+          <IconButton onClick={toggleFullscreen} className="text-white ">
+            {isFullscreen ? <FullscreenExit /> : <Fullscreen />}
+          </IconButton>
         </div>
-
-        <IconButton onClick={toggleFullscreen} className="text-white ">
-          {isFullscreen ? <FullscreenExit /> : <Fullscreen />}
-        </IconButton>
-      </div>
       </div>
     </div>
   );
