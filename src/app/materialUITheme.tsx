@@ -8,6 +8,7 @@ import LoadingOverlay from "./components/Loading";
 import { ThemeProvider } from "@mui/material/styles";
 import { useContextDefault } from "@/context/Context";
 import TelaCheia from "./components/TelaCheia";
+import Music from "./components/Musix";
 
 //configurar tema
 //cores e fontes
@@ -60,6 +61,7 @@ export default function ThemeRegistry({ children }: { children: React.ReactNode 
       {/* pathname === '/' || pathname === '/menu' ? '' : <BarraLateral /> */}
       {isLandscape ? children : <OrientationWarning />}
       {abrirImagensTelaCheia?.open && (<TelaCheia />)}
+      <Music />
     </ThemeProvider>
   );
 }

@@ -65,13 +65,14 @@ const ImplantacaoTests: React.FC = () => {
   return (
     <div className="w-full h-full grid grid-cols-12 grid-rows-12">
       {/* imagem do grafismo superior */}
-      <div className="col-span-12 row-span-2 w-full h-full relative">
-        {/* <Image
-          src="/projeto/implantacao/grafismo-Implantacao.svg"
+      <div className="col-span-12 row-span-2 w-full h-full relative flex ">
+        <Image
+          src="/projeto/implantacao/toque-nas-legendas.svg"
           alt="grafismo"
-          fill
-          className="object-contain object-right"
-        /> */}
+          width={200}
+          height={200}
+          className="object-contain p-4 animate-pulse "
+        />
       </div>
 
       {/* container das legendas */}
@@ -109,7 +110,7 @@ const ImplantacaoTests: React.FC = () => {
 
       {/* container da implantacao e botões*/}
       <div className="col-span-8 row-span-10 grid grid-rows-12">
-        <div className="w-full h-full relative row-span-9 ">
+        <div className="w-full h-full relative row-span-10 ">
           <Image
             src={`${
               changeType === "Térreo"
@@ -120,13 +121,13 @@ const ImplantacaoTests: React.FC = () => {
             fill
             className="object-contain p-4"
           />
-          <Image src="/menu/max.svg" alt="expandir imagem" width={50} height={50} className="absolute bottom-16 right-20 cursor-pointer" onClick={() => setAbrir?.({ open: true, pathImage: `${
+          <Image src="/menu/max.svg" alt="expandir imagem" width={50} height={50} className="absolute bottom-16 right-20 cursor-pointer animate-bounce animate-delay-1000 animate-thrice" onClick={() => setAbrir?.({ open: true, pathImage: `${
               changeType === "Térreo"
                 ? "/projeto/implantacao/planta1.png"
                 : "/projeto/implantacao/planta2.png"
             }` })}/>
         </div>
-        <div className="row-span-3 flex flex-col w-full h-full gap-y-2">
+        <div className="row-span-2 flex flex-col w-full h-full gap-y-2">
           <div className="w-full h-full relative">
             <Image
               src="/projeto/implantacao/IMPLANTAÇÃO.png"

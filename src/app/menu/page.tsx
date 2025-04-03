@@ -12,6 +12,7 @@ const MenuPage: React.FC = () => {
   const setSubmenuAndSelected = context
     ? context.setSubmenuAndSelected
     : () => {};
+  const toogleSound = context?.toogleSound;
 
   return (
     <div className="w-full h-screen bg-background grid grid-cols-12 py-16 gap-x-10 animate-fade-right animate-duration-[2000ms] ease-in-out">
@@ -31,6 +32,9 @@ const MenuPage: React.FC = () => {
               onClick={() => {
                 setSubmenuAndSelected(item.submenu[0], item.caminho);
                 router.push(item.caminho);
+                if (toogleSound) {
+                  toogleSound('button-effect.mp3');
+                }
               }}
               className={` hover:bg-[#EAE6DA]/30
                border-2 relative flex items-center justify-between w-full rounded-lg shadow-md overflow-hidden h-12 row-span-1`}
@@ -80,7 +84,12 @@ const MenuPage: React.FC = () => {
           className="object-cover"
         />
       </div>
-      <Image src="/voltar-descanso.svg" width={50} height={50} alt="Voltar" className="absolute bottom-4 left-4 cursor-pointer" onClick={() => router.push("/")} />
+      <Image src="/voltar-descanso.svg" width={50} height={50} alt="Voltar" className="absolute bottom-4 left-4 cursor-pointer" onClick={() => {
+        router.push("/");
+        if (toogleSound) {
+          toogleSound('button-effect.mp3'); // Chama a função toogleSound com o caminho do áudio
+        } // Verifica se toogleSound está definido
+      }} />
     </div>
   );
 };

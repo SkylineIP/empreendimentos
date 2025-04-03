@@ -1,32 +1,19 @@
 "use client";
 
 import React from "react";
-import { useContextDefault } from "../../context/Context";
 import { useRef, useState } from "react";
 import { IconButton } from "@mui/material";
-import { PlayArrow, Pause, VolumeOff, VolumeUp, Fullscreen, FullscreenExit } from "@mui/icons-material";
+import {  VolumeOff, VolumeUp, Fullscreen, FullscreenExit } from "@mui/icons-material";
 
 const Videos: React.FC = () => {
-  const context = useContextDefault();
-  const sound = context?.sound;
-  const setSound = context ? context.toggleSound : () => {};
   const videoRef = useRef<HTMLVideoElement | null>(null); // 🔹 Tipagem corrigida
-  const [playing, setPlaying] = useState(false);
   const [muted, setMuted] = useState(false);
   const [isFullscreen, setIsFullscreen] = useState(false);
   const containerRef = useRef<HTMLDivElement | null>(null);
 
   const togglePlay = () => {
     if (videoRef.current) { // 🔹 Sempre verificar se não é null
-      if (playing) {
-        videoRef.current.pause();
-      } else {
-        if(sound) {
-          setSound();
-        }
         videoRef.current.play();
-      }
-      setPlaying(!playing);
     }
   };
 
@@ -61,9 +48,6 @@ const Videos: React.FC = () => {
         <div className="absolute bottom-2 left-2 right-2 flex items-center justify-between bg-[#B29A83]/70 p-2 mx-12 rounded-lg z-50 border-2 border-[#786a5d] ">
         {/* Botão Play/Pause */}
         <div>
-        <IconButton onClick={togglePlay} className="text-white">
-          {playing ? <Pause /> : <PlayArrow />}
-        </IconButton>
 
         {/* Botão Mute/Unmute */}
         <IconButton onClick={toggleMute} className="text-white">

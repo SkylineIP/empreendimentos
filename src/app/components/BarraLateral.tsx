@@ -18,6 +18,7 @@ const BarraLateral: React.FC = memo(function BarraLateral() {
   const setSubmenuAndSelected = context
     ? context.setSubmenuAndSelected
     : () => {};
+  const toogleSound = context?.toogleSound;
 
   return (
     <div
@@ -43,6 +44,9 @@ const BarraLateral: React.FC = memo(function BarraLateral() {
               onClick={() => {
                 setSubmenuAndSelected(item.submenu[0], item.caminho);
                 router.push(item.caminho);
+                if (toogleSound) {
+                  toogleSound('button-effect.mp3'); // Chama a função toogleSound com o caminho do áudio
+                } // Verifica se toogleSound está definido
                 //setIsOpen(false);
               }}
               disabled={item.title == "VÍDEOS"}
@@ -98,6 +102,9 @@ const BarraLateral: React.FC = memo(function BarraLateral() {
               onClick={() => {
                 setSubmenuAndSelected(item.submenu[0], item.caminho);
                 router.push(item.caminho);
+                if (toogleSound) {
+                  toogleSound('button-effect.mp3'); // Chama a função toogleSound com o caminho do áudio
+                }
                 //setIsOpen(false);
               }}
               disabled={item.title == "VÍDEOS"}
@@ -134,7 +141,12 @@ const BarraLateral: React.FC = memo(function BarraLateral() {
             className="hidden desktop:block"
           />
         </button> */}
-        <button onClick={() => router.push("/menu")}>
+        <button onClick={() => {
+          router.push("/menu");
+          if (toogleSound) {
+            toogleSound('button-effect.mp3'); // Chama a função toogleSound com o caminho do áudio
+          }
+        }}>
           <Image
             src="/menu/home.svg"
             alt="Ícone de saída"
