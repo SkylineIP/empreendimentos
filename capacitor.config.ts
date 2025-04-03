@@ -7,7 +7,9 @@ const config: CapacitorConfig = {
   plugins: {
     Updater: {
       autoUpdate: true,
-      updateUrl: 'hhttps://github.com/SkylineIP/empreendimentos/tree/dresden-altez',
+      url: 'https://github.com/SkylineIP/empreendimentos/tree/dresden-altez',
+      channel: 'stable',
+      checkFrequency: 'onAppStart',
     },
   },
 };

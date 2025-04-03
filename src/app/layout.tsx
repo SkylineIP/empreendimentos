@@ -5,9 +5,16 @@ import { ContextDefault } from "../context/Context";
 
 import ThemeRegistry from "./materialUITheme";
 
-import { CapacitorUpdater } from '@capgo/capacitor-updater'
+// import { CapacitorUpdater } from '@capgo/capacitor-updater'
 
-CapacitorUpdater.notifyAppReady();
+
+// CapacitorUpdater.notifyAppReady();
+
+// const func = async () => {
+//   await CapacitorUpdater.notifyAppReady();
+// }
+
+// func();
 
 export const metadata: Metadata = {
   title: "Dresden Altez",
@@ -20,7 +27,6 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  console.log(CapacitorUpdater.notifyAppReady());
   return (
     <html lang="pt-br">
       <body className={`bg-background font-inter text-foreground`}>
