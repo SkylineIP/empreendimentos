@@ -8,13 +8,12 @@ const Music = () => {
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const soundPath = context?.soundPath;
   const sound = context?.sound;
-  if (audioRef.current) {
-    audioRef.current.volume = 0.5; // Define o volume do áudio
-  }
+  
   useEffect(() => {
     const audio = audioRef.current;
     if (audio) {
       audio.load(); // Recarrega o áudio para garantir que a mudança no `src` seja aplicada
+      audio.volume = 0.5; 
       audio.play().catch((err) => console.error("Erro ao tocar áudio:", err));
     }
   }, [sound]);

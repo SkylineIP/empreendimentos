@@ -4,6 +4,9 @@ import { useContextDefault } from "@/context/Context";
 import Image from "next/image";
 import { memo, useRef, useState } from "react";
 import SignatureCanvas from "react-signature-canvas";
+import Box from "@mui/material/Box";
+
+import Slider from "@mui/material/Slider";
 
 const TelaCheia: React.FC = memo(() => {
   const context = useContextDefault();
@@ -15,8 +18,10 @@ const TelaCheia: React.FC = memo(() => {
   const [startDistance, setStartDistance] = useState<number | null>(null);
   const [position, setPosition] = useState({ x: 0, y: 0 });
   const [lastPosition, setLastPosition] = useState({ x: 0, y: 0 });
-  const [touchStart, setTouchStart] = useState<{ x: number; y: number } | null>(null);
-  const [zoomFactor, setZoomFactor] = useState(1); 
+  const [touchStart, setTouchStart] = useState<{ x: number; y: number } | null>(
+    null
+  );
+  const [zoomFactor, setZoomFactor] = useState(1);
   const [isDrawing, setIsDrawing] = useState(false);
   const canvasRef = useRef<SignatureCanvas>(null);
   // Função para calcular a distância entre dois pontos de toque
@@ -28,39 +33,44 @@ const TelaCheia: React.FC = memo(() => {
     return Math.sqrt(dx * dx + dy * dy);
   };
 
+
+
+  const handleZoomChange = (_: Event, value: number | number[]) => {
+    if (typeof value === "number") {
+      if (imgRef.current) {
+        setPosition({
+          x: 0,
+          y: 0,
+        });
+        setScale(value);
+      }
+    }
+  };
+
   // Evento de início do toque
   const handleTouchStart = (e: React.TouchEvent<HTMLImageElement>) => {
-    if (e.touches.length === 2) {
-      setStartDistance(getDistance(Array.from(e.touches) as Touch[]));
-      setZoomFactor(1); // Reinicia o efeito acumulativo do zoom
-
-      // Calcula o ponto médio entre os dois dedos para centralizar o zoom
-      const touch1 = e.touches[0];
-      const touch2 = e.touches[1];
-      const centerX = (touch1.clientX + touch2.clientX) / 2;
-      const centerY = (touch1.clientY + touch2.clientY) / 2;
-
-      setTouchStart({ x: centerX, y: centerY });
-    } else if (e.touches.length === 1 && scale > 1) {
       setTouchStart({ x: e.touches[0].clientX, y: e.touches[0].clientY });
-    }
   };
 
   // Gerencia o zoom e o arrastar da imagem
   const handleTouchMove = (e: React.TouchEvent<HTMLImageElement>) => {
     if (e.touches.length === 2 && startDistance !== null) {
       const currentDistance = getDistance(Array.from(e.touches) as Touch[]);
-      
+
       // **Fator de suavização** para reduzir o impacto imediato da pinça
       const smoothingFactor = 0.05;
-      const distanceChange = (currentDistance - startDistance) * smoothingFactor;
-      
+      const distanceChange =
+        (currentDistance - startDistance) * smoothingFactor;
+
       // **Acúmulo progressivo**: Quanto mais tempo o movimento durar, mais zoom ele dá
       const newZoomFactor = zoomFactor + Math.abs(distanceChange) * 0.02;
       setZoomFactor(newZoomFactor);
 
       // **Novo cálculo do zoom**, com limite entre 1x e 3x
-      const newScale = Math.min(Math.max(1, scale + distanceChange * newZoomFactor), 3);
+      const newScale = Math.min(
+        Math.max(1, scale + distanceChange * newZoomFactor),
+        3
+      );
 
       if (touchStart && imgRef.current) {
         const rect = imgRef.current.getBoundingClientRect();
@@ -106,14 +116,40 @@ const TelaCheia: React.FC = memo(() => {
           fill
           className="object-contain object-top"
           onTouchStart={handleTouchStart}
-          onTouchMove={handleTouchMove} 
+          onTouchMove={handleTouchMove}
           onTouchEnd={handleTouchEnd}
         />
       </div>
       <div className="absolute right-8 top-8 flex justify-between items-center gap-x-8">
+        {isDrawing && (
+          <button onClick={() => canvasRef.current?.clear()}>
+            <Image
+              src="/apagador.svg"
+              alt="botao para fechar"
+              aria-label="fechar"
+              width={50}
+              height={50}
+              className="object-contain z-50 relative"
+            />
+          </button>
+        )}
+
+        <button onClick={() => setIsDrawing(!isDrawing)}>
+          <Image
+            src={isDrawing ? "/pencil-pressed.svg" : "/pencil.svg"}
+            alt="botao para fechar"
+            aria-label="fechar"
+            width={50}
+            height={50}
+            className="object-contain z-50 relative"
+          />
+        </button>
+
         <button
+          style={{ zIndex: 100 }}
           onClick={() => {
             setAbrirImagensTelaCheia?.({ open: false, pathImage: "" });
+            setIsDrawing(!isDrawing);
           }}
         >
           <Image
@@ -125,18 +161,6 @@ const TelaCheia: React.FC = memo(() => {
             className="object-contain"
           />
         </button>
-        <button
-          onClick={() => setIsDrawing(!isDrawing)}
-        >
-          <Image
-            src={isDrawing ? "/pencil-pressed.svg" : "/pencil.svg"}
-            alt="botao para fechar"
-            aria-label="fechar"
-            width={50}
-            height={50}
-            className="object-contain z-50 relative"
-          />
-        </button>
       </div>
       {isDrawing && (
         <div className="absolute inset-0">
@@ -144,18 +168,25 @@ const TelaCheia: React.FC = memo(() => {
             ref={canvasRef}
             penColor="red"
             canvasProps={{
-              className: "w-full h-full bg-transparent"
+              className: "w-full h-full bg-transparent",
             }}
           />
-          {/* Botão para limpar o desenho */}
-          <button
-            onClick={() => canvasRef.current?.clear()}
-            className="absolute bottom-4 right-4 bg-red-500 text-white px-4 py-2 rounded-lg shadow-md"
-          >
-            Limpar
-          </button>
         </div>
       )}
+      <Box
+        sx={{ width: 300, zIndex: 100 }}
+        className="absolute bottom-0 right-4  "
+      >
+        <Slider
+          value={scale}
+          min={1}
+          max={3}
+          step={0.1}
+          aria-label="Zoom"
+          valueLabelDisplay="auto"
+          onChange={handleZoomChange}
+        />
+      </Box>
     </div>
   );
 });

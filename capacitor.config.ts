@@ -1,8 +1,8 @@
 import { CapacitorConfig } from '@capacitor/cli';
 
 const config: CapacitorConfig = {
-  appId: 'com.exemplo.meuapp',
-  appName: 'Dresden-Altez',
+  appId: 'com.skylinedresden.app',
+  appName: 'Dresden Altez',
   webDir: 'out',
   plugins: {
     Updater: {
@@ -11,6 +11,14 @@ const config: CapacitorConfig = {
       channel: 'stable',
       checkFrequency: 'onAppStart',
     },
+    SplashScreen: {
+      launchShowDuration: 2000,  // Tempo da splash (em ms)
+      launchAutoHide: true,
+      backgroundColor: "#ffffff",  // Cor de fundo
+      androidSplashResourceName: "splash",
+      androidScaleType: "CENTER_CROP",
+      showSpinner: false
+    }
   },
 };
 
