@@ -22,11 +22,11 @@ const Home: React.FC = () => {
   React.useEffect(() => {
     const timer = setTimeout(() => {
       setOpenSkyline(true);
-    }, 3500); // 2 segundos
+    }, 2000); 
 
     return () => clearTimeout(timer);
   }, []); // Limpa o timer quando o componente é desmontado
-  
+
   return (
     <div className="w-fulll h-screen bg-[#2824B4]">
     {openSkyline ? (<div className="w-full h-screen flex justify-evenly bg-[#B29A83] bg-[url(/tela-descanso.png)] bg-cover bg-center bg-no-repeat animate-fade-right cursor-pointer" onClick={handleClick}>
