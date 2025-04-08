@@ -15,19 +15,21 @@ export default {
         foreground: "var(--foreground)",
         menu: "var(--menu)",
         menuText: "var(--menuText)",
+        telaInicial: "var(--telainicial)",
+        telamenu: "var(--telamenu)",
       },
       gridTemplateColumns: {
-        24: "repeat(24, minmax(0, 1fr))", // Define um grid de 24 colunas
+        24: "repeat(24, minmax(0, 1fr))",
       },
       fontFamily: {
-        minhaFonte: ['InstrumentSerif-Regular', 'InterTight'],
+        minhaFonte: ['OpenSans', 'OpenSansCondensed', 'sans-OpenSansSemiCondensed', 'PPPangaia', 'Questrial'],
       },
-    },
-    screens: {
-      desktop: { min: "1536px" },  // Estilos para telas maiores que 1536px
-      desktopmini: { min: "901px", max: "1535px" },  // Ajustes para telas de 901px até 1535px
-      tablet: { min: "601px", max: "900px" },  // Ajustes para tablets (601px até 900px)
-      mobile: { max: "600px" },  // Ajustes para telas menores que 601px
+      screens: {
+        desktop: { min: "1536px" },
+        desktopmini: { min: "901px", max: "1535px" },
+        tablet: { min: "601px", max: "900px" },
+        mobile: { max: "600px" },
+      },
     },
   },
   plugins: [tailwindAnimate, tailwindAnimated],

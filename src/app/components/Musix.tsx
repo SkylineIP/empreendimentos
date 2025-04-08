@@ -8,6 +8,15 @@ const Music = () => {
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const soundPath = context?.soundPath;
   const sound = context?.sound;
+
+  const volumeDown = () => {
+    const audio = audioRef.current;
+    if (audio) {
+      audio.volume = 0.5; // Diminui o volume em 10%
+    }
+  }
+
+  volumeDown();
   
   useEffect(() => {
     const audio = audioRef.current;
