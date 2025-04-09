@@ -1,4 +1,4 @@
-@import 'tailwindcss';
+@import "tailwindcss";
 @config '../../tailwind.config.ts';
 
 /* Base layer */
@@ -22,6 +22,18 @@
   ::selection {
     background-color: rgba(137, 125, 123, 0.4);
   }
+}
+
+body {
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+img {/* Para navegadores baseados em WebKit */
+  -webkit-user-drag: none;
 }
 
 /* Utilities layer */
@@ -55,11 +67,15 @@
 
   :root {
     --telainicial: #000000;
-    --telamenu: #461111;
-    --background: #e2ded2;
-    --foreground: #896337;
+    --telamenu: #234c43;
+    --background: #ece2cd;
+    --foreground: #bc6422;
     --menu: #afa38b;
     --menuText: #1e1e1e;
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
     user-select: none;
   }
 
@@ -81,49 +97,48 @@
   }
 
   .font-inter {
-    font-family: 'InterTight', sans-serif;
+    font-family: "InterTight", sans-serif;
     font-stretch: ultra-expanded;
   }
 }
 
 /* Fonts */
 @font-face {
-  font-family: 'OpenSansCondensed';
+  font-family: "OpenSansCondensed";
   font-style: normal;
   font-weight: 400;
   font-display: swap;
-  src: url('./fonts/OpenSans_Condensed-Regular.ttf') format('ttf');
+  src: url("./fonts/OpenSans_Condensed-Regular.ttf") format("ttf");
 }
 
 @font-face {
-  font-family: 'OpenSans';
+  font-family: "OpenSans";
   font-style: normal;
   font-weight: 400;
   font-display: swap;
-  src: url('./fonts/OpenSans-Regular.ttf') format('ttf');
+  src: url("./fonts/OpenSans-Regular.ttf") format("ttf");
 }
 
 @font-face {
-  font-family: 'OpenSansSemiCondensed';
+  font-family: "OpenSansSemiCondensed";
   font-style: normal;
   font-weight: 400;
   font-display: swap;
-  src: url('./fonts/OpenSans_SemiCondensed-Regular.ttf') format('ttf');
+  src: url("./fonts/OpenSans_SemiCondensed-Regular.ttf") format("ttf");
 }
 
 @font-face {
-  font-family: 'PPPangaia';
+  font-family: "PPPangaia";
   font-style: normal;
   font-weight: 400;
   font-display: swap;
-  src: url('./fonts/PPPangaia-Medium-BF654c530cc86d5.otf') format('otf');
+  src: url("./fonts/PPPangaia-Medium-BF654c530cc86d5.otf") format("otf");
 }
 
 @font-face {
-  font-family: 'Questrial';
+  font-family: "Questrial";
   font-style: normal;
   font-weight: 400;
   font-display: swap;
-  src: url('./fonts/Questrial-Regular.ttf') format('ttf');
+  src: url("./fonts/Questrial-Regular.ttf") format("ttf");
 }
-

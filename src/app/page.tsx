@@ -28,7 +28,7 @@ const Home: React.FC = () => {
   }, []); // Limpa o timer quando o componente é desmontado
 
   return (
-    <div className="w-fulll h-screen bg-background-tela-inicial">
+    <div className="w-fulll h-screen bg-background-tela-inicial overflow-hidden">
       {openSkyline ? (
         <div
           id="tela-inicial"
@@ -42,7 +42,7 @@ const Home: React.FC = () => {
             width={500}
             height={500}
           />
-          <button className="absolute bottom-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 m-4">
+          <button className="absolute bottom-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 m-4 cursor-pointer">
             <Image
               src="/inicial/inicie.svg"
               className="animate-duration-[3000ms] object-contain z-10 animate-wiggle animate-infinite"
@@ -55,7 +55,7 @@ const Home: React.FC = () => {
       ) : (
         <Image
           src="/skyline.png"
-          className="animate-fade-in animate-duration-[3000ms] bg-gradient-to-r from-[#2824B4] to-[#0058D7] object-contain"
+          className="animate-fade-left overflow-hidden over bg-gradient-to-r from-[#2824B4] to-[#0058D7] object-contain"
           alt="Skyline, inovação e produções"
           priority
           fill

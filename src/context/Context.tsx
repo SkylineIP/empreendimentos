@@ -29,7 +29,7 @@ export const ContextDefault = ({ children }: { children: ReactNode }) => {
   let arrayOfSubmenu = '';
   if(menuStructure.find((item: { caminho: string }) => item.caminho == currenthPath)){
   const indexSelected = menuStructure.findIndex((item: { caminho: string }) => item.caminho == currenthPath);
-  arrayOfSubmenu = menuStructure[indexSelected].submenu[0];
+  arrayOfSubmenu = menuStructure[indexSelected].submenu?.[0] || '';
   }
 
   const [menu, setMenu] = useState({ submenu: arrayOfSubmenu, selected: currenthPath });
