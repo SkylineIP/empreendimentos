@@ -72,6 +72,7 @@ img {/* Para navegadores baseados em WebKit */
     --foreground: #bc6422;
     --menu: #afa38b;
     --menuText: #1e1e1e;
+    --submenuimagens: #E2B34A;
     user-select: none;
     -webkit-user-select: none;
     -moz-user-select: none;

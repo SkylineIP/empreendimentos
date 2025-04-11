@@ -17,6 +17,7 @@ export default {
         menuText: "var(--menuText)",
         telaInicial: "var(--telainicial)",
         telamenu: "var(--telamenu)",
+        submenuimagens: "var(--submenuimagens)",
       },
       gridTemplateColumns: {
         24: "repeat(24, minmax(0, 1fr))",
@@ -29,6 +30,10 @@ export default {
         desktopmini: { min: "901px", max: "1535px" },
         tablet: { min: "601px", max: "900px" },
         mobile: { max: "600px" },
+      },
+      animation: {
+        'spin-slow': 'spin 10s linear infinite',
+        'spin-slower': 'spin 8s linear infinite',
       },
     },
   },

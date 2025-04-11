@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import { useContextDefault } from "../../context/Context";
+import Image from "next/image";
 
 const GoogleMap = () => {
   const mapRef = useRef<HTMLDivElement>(null);
@@ -43,7 +44,7 @@ const GoogleMap = () => {
         position: { lat: -16.004796806902785, lng: -48.05758632370723 },
         map: newMap,
         icon: {
-          url: "/loc/pin.svg", // Permite interações com um dedo
+          url: "/local/pin-resid.svg", // Permite interações com um dedo
           scaledSize: new google.maps.Size(250, 250), // Set width and height
         } as google.maps.Icon, // Explicitly cast to avoid TypeScript errors
       });
@@ -65,11 +66,22 @@ const GoogleMap = () => {
     }
   }, [submenu]);
 
+  const changeMapType = () => {
+    if (map) {
+      const newType = isSatellite ? "roadmap" : google.maps.MapTypeId.HYBRID;
+      map.setMapTypeId(newType);
+      setIsSatellite(!isSatellite);
+    }
+  };
+
   return (
     <div className="relative w-full h-full">
       <div ref={mapRef} className="w-full h-full" />
 
       {/* Botão de alternância do mapa */}
+      <button className="absolute bottom-0 right-0 cursor-pointer" onClick={changeMapType}>
+          <Image src={isSatellite ? '/local/mapa2d.svg': 'local/mapa-satelite.svg'} width={200} height={200} alt="mudar mapa entre 2d e satélite"/>
+      </button>
     </div>
   );
 };

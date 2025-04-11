@@ -9,28 +9,17 @@ const Home: React.FC = () => {
   const router = useRouter();
   const context = useContextDefault();
   const toogleSound = context?.toogleSound;
-  const [openSkyline, setOpenSkyline] = React.useState(false);
-
+  const setSubmenuAndSelected = context?.setSubmenuAndSelected;
   const handleClick = () => {
-    router.push("/localizacao"); // Redireciona para a página de localização
-    setOpenSkyline(false); // Define openSkyline como false para ocultar a imagem de fundo
+    router.push("/localizacao"); // Redireciona para a página de localizaçãoyline como false para ocultar a imagem de fundo
+    setSubmenuAndSelected?.('TOUR 360º', '/localizacao'); // Chama a função setSubmenuAndSelected com o submenu e caminho desejado
     if (toogleSound) {
       toogleSound("start-exp.mp3"); // Chama a função toogleSound com o caminho do áudio
     } // Verifica se toogleSound está definido
   };
-
-  React.useEffect(() => {
-    const timer = setTimeout(() => {
-      setOpenSkyline(true);
-    }, 2000);
-
-    return () => clearTimeout(timer);
-  }, []); // Limpa o timer quando o componente é desmontado
-
   return (
     <div className="w-fulll h-screen bg-background-tela-inicial overflow-hidden">
-      {openSkyline ? (
-        <div
+      <div
           id="tela-inicial"
           className="w-full h-screen flex justify-evenly bg-[#234C43] bg-[url(/inicial/fundo-inicial.jpg)] bg-cover bg-center bg-no-repeat animate-fade-right cursor-pointer"
           onClick={handleClick}
@@ -52,15 +41,6 @@ const Home: React.FC = () => {
             />
           </button>
         </div>
-      ) : (
-        <Image
-          src="/skyline.png"
-          className="animate-fade-left overflow-hidden over bg-gradient-to-r from-[#2824B4] to-[#0058D7] object-contain"
-          alt="Skyline, inovação e produções"
-          priority
-          fill
-        />
-      )}
     </div>
   );
 };

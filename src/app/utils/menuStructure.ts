@@ -3,13 +3,13 @@ const menuStructure = [
     title: "LOCALIZAÇÃO",
     submenu: ["TOUR 360º", "MAPAS"],
     caminho: "/localizacao",
-    submenuElements: ["logo-escrita-localizacao", "mapas", "tour", "home"],
+    submenuElements: ["mapas", "tour"],
   },
   {
     title: "IMAGENS",
     submenu: [""],
     caminho: "/imagens",
-    submenuElements: ["logo-escrita-imagens"],
+    submenuElements: ["legenda-imagens"],
   },
   {
     title: "PROJETO",
