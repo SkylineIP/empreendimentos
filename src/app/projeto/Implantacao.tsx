@@ -88,7 +88,7 @@ const Implantacao: React.FC = memo(() => {
             src="/projeto/implantacao/aviso-legenda.png"
             alt="legenda"
             fill
-            className="object-contain p-4"
+            className="object-contain p-4 animate-wiggle animate-infinite"
           />
         </div>
       ) : (
