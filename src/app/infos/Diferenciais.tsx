@@ -10,7 +10,7 @@ const Diferenciais: React.FC = () => {
           src={`${changeImage ? "/info/dif-1.png" : "/info/dif-2.png"}`}
           alt="dif"
           fill
-          className="object-fill object-top"
+          className="object-contain object-top"
         />
         <div className="absolute bottom-2 right-[50%] translate-x-1/2 p-2 gap-8 flex justify-center">
           <button onClick={() => setChangeImage(true)} disabled={changeImage}>

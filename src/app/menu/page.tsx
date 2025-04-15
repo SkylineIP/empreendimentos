@@ -60,7 +60,6 @@ const MenuPage: React.FC = () => {
             >
               <button
                 key={index}
-                disabled={item.title === "VÍDEOS"}
                 onClick={() => {
                   setSubmenuAndSelected(item.submenu[0], item.caminho);
                   router.push(item.caminho);

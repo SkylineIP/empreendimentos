@@ -25,9 +25,9 @@ const BarraLateral: React.FC = memo(function BarraLateral() {
       key="menu-lateral"
       className={`${
         openMenu
-          ? "col-span-1 animate-fade-left"
-          : "col-span-3 animate-fade-right"
-      } animate-ease-in-out  animate-duration-[2000ms]  row-span-12 bg-[#896337] w-full my-6 rounded-r-3xl flex flex-col justify-between items-center p-[15%]`}
+          ? "col-span-1 "
+          : "col-span-3 "
+      }  row-span-12 bg-[#896337] w-full my-6 rounded-r-3xl flex flex-col justify-between items-center p-[15%]`}
     >
       <div>
         <Image
@@ -49,7 +49,6 @@ const BarraLateral: React.FC = memo(function BarraLateral() {
                 } // Verifica se toogleSound está definido
                 //setIsOpen(false);
               }}
-              disabled={item.title == "VÍDEOS"}
               className={`${
                 selected == item.caminho
                   ? btnPressed
@@ -107,7 +106,6 @@ const BarraLateral: React.FC = memo(function BarraLateral() {
                 }
                 //setIsOpen(false);
               }}
-              disabled={item.title == "VÍDEOS"}
               className={`${
                 selected == item.caminho
                   ? btnPressed

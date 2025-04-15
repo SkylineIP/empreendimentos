@@ -15,7 +15,7 @@ const arrayCom32Itens = Array.from(
 
 const arrayCom9Itens = Array.from(
   { length: 9 },
-  (_, index) => `/imagens/apt/Miniatura-Galeria-${index}.png`
+  (_, index) => `/imagens/apt/Miniatura-Galeria-${index + 1}.png`
 );
 
 const arrayLegenda = [
@@ -32,24 +32,24 @@ const arrayLegenda = [
   "INFLUENCER SPACE",
   "SALA DE REUNIÕES",
   "PET PLACE",
-  "VAGA PARA CARREGAMENTO RÁPIDO",
-  "PLAYGROUND",
   "QUADRA GRAMADA",
+  "PLAYGROUND",
+  "VAGA PARA CARREGAMENTO RÁPIDO",
   "BICICLETÁRIO",
   "ESPAÇO GOURMET",
   "SALÃO DE JOGOS",
   "BRINQUETOCA",
   "CHURRASQUEIRA",
+  "PRAÇA DO VIOLÃO",
+  "MINI QUADRA",
+  "BEACH TÊNIS",
   "PRAÇA RELAX",
-  "SALA DE MASSAGEM",
   "PISCINA ADULTO",
   "PISCINA INFANTIL",
   "SPA, RELAX E SAUNA",
-  "BEACH TÊNIS",
+  "SALA DE MASSAGEM",
   "ACADEMIA",
   "ACADEMIA",
-  "MINI QUADRA",
-  "PRAÇA DO VIOLÃO",
   "VISTA AÉREA LAZER",
 ];
 
@@ -60,9 +60,9 @@ const arrayLegenda1 = [
   "VARANDA APTO FINAL 02",
   "LIVING APTO FINAL 03",
   "VARANDA APTO FINAL 03",
+  "TERRAÇO APTO GARDEN",
   "PISCINA PENTHOUSE",
-  "TERRAÇO",
-  "LIVING PENTHOUSE 1002",
+  "LIVING PENTHOUSE",
 ];
 
 const Imagens: React.FC = memo(function Localizacao() {
@@ -108,7 +108,9 @@ const Imagens: React.FC = memo(function Localizacao() {
                 className="relative w-full h-full row-span-8 bg-[url(/imagens/fundo_imagem.png)] bg-cover bg-no-repeat bg-center rounded-3xl animate-fade-up animate-duration-[2000ms]"
               >
                 <Image
-                  src={`/imagens/${categoriaImagens}/Imagem-Expandida-${imagemAmpliada.imagem}.png`}
+                  src={`/imagens/${categoriaImagens}/Imagem-Expandida-${
+                    imagemAmpliada.imagem + 1
+                  }.png`}
                   alt="Imagem ampliada"
                   fill
                   className="object-cover rounded-3xl"
@@ -119,18 +121,20 @@ const Imagens: React.FC = memo(function Localizacao() {
                     : arrayLegenda1[imagemAmpliada.imagem]}
                 </p>
                 <Image
-                        src="/menu/max.svg"
-                        alt="expandir imagem"
-                        width={50}
-                        height={50}
-                        className="absolute bottom-4 right-4 cursor-pointer"
-                        onClick={() =>
-                          setAbrir?.({
-                            open: true,
-                            pathImage: `/imagens/${categoriaImagens}/Imagem-Expandida-${imagemAmpliada.imagem}.png`,
-                          })
-                        }
-                      />
+                  src="/menu/max.svg"
+                  alt="expandir imagem"
+                  width={50}
+                  height={50}
+                  className="absolute bottom-4 right-4 cursor-pointer"
+                  onClick={() =>
+                    setAbrir?.({
+                      open: true,
+                      pathImage: `/imagens/${categoriaImagens}/Imagem-Expandida-${
+                        imagemAmpliada.imagem + 1
+                      }.png`,
+                    })
+                  }
+                />
               </div>
               <div className="w-full row-span-2 overflow-x-auto overflow-y-hidden flex flex-col custom-scrollbar rounded-3xl p-2">
                 <div className="flex min-w-max gap-8">
@@ -148,7 +152,6 @@ const Imagens: React.FC = memo(function Localizacao() {
                         fill
                         className="object-contain object-top"
                       />
-                      
                     </button>
                   ))}
                 </div>

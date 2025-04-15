@@ -10,14 +10,14 @@
   user-select: none;
 }
 
-@media (prefers-color-scheme: dark) {
+/* @media (prefers-color-scheme: dark) {
   :root {
     --background: #1E1E1E;
     --foreground: #896337;
     --menu: #AFA38B;
     --menuText: #E2DED2;
   }
-}
+} */
 
 p, h1, h2, h3, h4 {
   user-select: text;

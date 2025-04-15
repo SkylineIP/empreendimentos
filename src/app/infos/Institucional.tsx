@@ -26,7 +26,7 @@ const Institucional: React.FC = () => {
           src={array[changeImage]}
           alt="ficha técnica"
           fill
-          className="object-fill object-top"
+          className="object-contain object-top"
         />
         <div className="absolute bottom-10 right-[50%] translate-x-1/2 p-2 gap-8 flex justify-center">
           <button onClick={() => handleImage("left")}>

@@ -29,7 +29,7 @@ const arrayLegendaBol = [
   "23. VAGAS PDC PARA VISITANTES",
 ];
 
-const bolotario = [2, 6, 9, 10, 11, 12, 16, 22, 23];
+const bolotario = [2, 6, 9, 10, 11, 12, 23];
 
 const arrayLegendaBol2 = [
   "1. APARTAMENTO 111 M²",
@@ -54,7 +54,7 @@ const arrayLegendaBol2 = [
   "20. APARTAMENTO GARDEN 208 M2",
 ];
 
-const bolotario2 = [1, 2, 3, 9, 20];
+const bolotario2 = [1, 2, 6, 9, 20];
 
 const Implantacao: React.FC = memo(() => {
   const [imageDestaque, setImageDestaque] = useState(-1);
