@@ -100,7 +100,7 @@ const Videos: React.FC = () => {
 
   return (
     <div
-      className={`w-full h-screen bg-primary text-primary grid grid-cols-12 grid-rows-12 ${
+      className={`min-w-[800px] min-h-[600px] w-full h-screen bg-primary text-primary grid grid-cols-12 grid-rows-12 ${
         openMenu ? "animate-fade" : "animate-fade-right"
       } animate-duration-[2000ms] ease-in-out overflow-hidden`}
       key={`${openMenu}`}

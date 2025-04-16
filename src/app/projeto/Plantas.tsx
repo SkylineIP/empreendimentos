@@ -69,23 +69,23 @@ const Plantas: React.FC = () => {
   const setAbrir = context?.setAbrirImagensTelaCheia;
   return (
     <div className="w-full h-full grid grid-cols-12 grid-rows-12 items-center pb-0 pr-0 relative overflow-hidden">
-      <div className="w-full h-full col-span-12 row-span-2"></div>
-      <div className="div-1 flex flex-col items-left justify-between col-span-5 p-10 row-span-12 w-full h-full">
+      <div className="div-1 grid  grid-rows-12 col-span-5 p-10 row-span-12 w-full h-full relative">
+        <div className="w-3/4 h-full relative row-span-2 max-w-[600px]">
         <Image
           src={`/projeto/plantas/${legendaPlantas}.png`}
           alt="legenda"
-          width={600}
-          height={400}
+          fill
           className="object-contain animate-fade animate-duration-[2000ms] animate-ease-in-out"
         />
-        <div className="flex flex-col justify-between overflow-y-auto custom-scrollbar w-3/4 h-full pr-12">
+        </div>
+        <div className="flex flex-col justify-between overflow-y-auto custom-scrollbar h-full pr-12 row-span-10">
           {arrayNomesBotoes.map((item, index) => (
             <div
               key={index}
-              className="flex flex-col justify-between flex-wrap h-full w-full gap-y-8 mt-8"
+              className="flex flex-col w-3/4 justify-between flex-wrap h-full gap-y-2 mt-4 max-w-[600px]"
             >
               <button
-                className={`flex items-center justify-center h-14 p-2 rounded-lg text-2xl ${
+                className={`flex items-center justify-center h-12 p-2 rounded-lg text-xl ${
                   index === btnPressed ? btnPlantasPressed : btnPlantas
                 }`}
                 onClick={() => {
@@ -99,14 +99,14 @@ const Plantas: React.FC = () => {
               </button>
               {btnPressed === index && item.subBtn.length > 0 && (
                 <div
-                  className="grid grid-cols-2 gap-4  gap-y-8 animate-fade-up animate-duration-[2000ms] animate-ease-in-out "
+                  className="grid grid-cols-2 gap-4  animate-fade-up animate-duration-[2000ms] animate-ease-in-out "
                   key={`${item.title}`}
                 >
                   {item.subBtn &&
                     item.subBtn.map((sub, i) => (
                       <button
                         key={sub.title + i}
-                        className={`flex items-center justify-center p-1 rounded-lg w-full text-sm px-10 ${
+                        className={`flex items-center justify-center rounded-lg w-full h-full p-1 text-sm px-10 ${
                           i === btnSubmenuPressed
                             ? btnSubmenuPlantasPressed
                             : btnSubmenuPlantas

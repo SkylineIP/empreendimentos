@@ -16,7 +16,7 @@ const MenuPage: React.FC = () => {
   const toogleSound = context?.toogleSound;
 
   return (
-    <div className="w-full h-screen bg-background grid grid-cols-12 py-16 gap-x-10 animate-fade-right animate-duration-[2000ms] ease-in-out overflow-hidden">
+    <div className="w-full h-screen bg-background grid grid-cols-12 py-16 gap-x-10 animate-fade-right animate-duration-[2000ms] ease-in-out overflow-hidden min-w-[800px] min-h-[600px]">
       <div className="col-span-8 bg-foreground w-full h-full rounded-r-3xl bg-[url(/menu-inicial/fundo-esquerda.png)] bg-cover bg-center bg-no-repeat flex flex-col py-20 items-center relative">
         <div className="absolute right-0 h-full w-[20%]">
           <div className="w-full h-full relative flex flex-col justify-end items-center pb-24">

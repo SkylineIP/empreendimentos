@@ -14,7 +14,7 @@ const Localizacao: React.FC = memo(function Localizacao() {
   const submenu = context?.submenu;
   return (
     <div
-      className={`w-full h-screen bg-primary text-primary grid grid-cols-12 grid-rows-12 ${
+      className={`min-w-[800px] min-h-[600px] w-full h-screen bg-primary text-primary grid grid-cols-12 grid-rows-12 ${
         openMenu ? "animate-fade-left" : "animate-fade-right"
       } `}
       key={`${openMenu}`}

@@ -2,6 +2,8 @@ import Image from "next/image";
 import React, { memo, useEffect, useState } from "react";
 import ImagemAmpliadaDoBolotario from "./ImagemAmpliada";
 import { useContextDefault } from "@/context/Context";
+import SvgMezanino from "./SvgMezanino";
+import SvgTerreo from "./SvgTerreo";
 
 const arrayLegendaBol = [
   "1. LOBBY",
@@ -83,7 +85,10 @@ const Implantacao: React.FC = memo(() => {
       </div>
 
       {legendaPopup ? (
-        <div className="col-span-4 row-span-10 w-full h-full relative animate-in" key="legenda-aviso">
+        <div
+          className="col-span-4 row-span-10 w-full h-full relative animate-in"
+          key="legenda-aviso"
+        >
           <Image
             src="/projeto/implantacao/aviso-legenda.png"
             alt="legenda"
@@ -103,11 +108,7 @@ const Implantacao: React.FC = memo(() => {
                 className="flex items-center justify-between text-[#1E1F1F] text-left"
                 key={index}
                 onClick={() => {
-                  if (
-                    !(changeType === "Térreo" ? bolotario : bolotario2).some(
-                      (value) => value === index + 1
-                    )
-                  ) {
+                  if (!(changeType === "Térreo" ? bolotario : bolotario2).some((value) => value === index + 1)) {
                     setImageDestaque(index + 1);
                     setAbrirImagemAmpliada(true);
                   }
@@ -143,6 +144,8 @@ const Implantacao: React.FC = memo(() => {
             fill
             className="object-contain p-4"
           />
+          {changeType === 'Térreo' ? (<SvgTerreo setImageDestaque={setImageDestaque} setAbrirImagemAmpliada={setAbrirImagemAmpliada} />):
+           (<SvgMezanino setImageDestaque={setImageDestaque} setAbrirImagemAmpliada={setAbrirImagemAmpliada} />)}
           <Image
             src="/menu/max.svg"
             alt="expandir imagem"

@@ -90,7 +90,7 @@ const Imagens: React.FC = memo(function Localizacao() {
     }
   }, [submenu]);
   return (
-    <div className="w-full h-screen bg-[url(/imagens/FUNDO.png)] bg-cover text-primary grid grid-cols-12 grid-rows-12">
+    <div className="w-full h-screen bg-[url(/imagens/FUNDO.png)] bg-cover text-primary grid grid-cols-12 grid-rows-12 min-w-[800px] min-h-[600px]">
       <BarraLateral />
       <div
         key={`${openMenu}`}

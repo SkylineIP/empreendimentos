@@ -33,7 +33,7 @@ const theme = createTheme({
   },
 });
 const OrientationWarning = () => (
-  <div className="flex flex-col items-center justify-center h-screen background text-primary ">
+  <div className="flex flex-col items-center justify-center h-screen background text-primary">
     <h1 className="text-2xl font-bold mb-4">Modo Paisagem Necessário</h1>
     <p className="text-center">
       Por favor, rotacione seu dispositivo para o modo paisagem para uma melhor experiência.

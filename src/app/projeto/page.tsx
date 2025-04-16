@@ -14,10 +14,10 @@ const Page: React.FC = () => {
   const submenu = context?.submenu;
 
   return (
-    <div key={`${openMenu}`} className={`w-full h-screen bg-primary text-primary grid grid-cols-12 grid-rows-12 
+    <div key={`${openMenu}`} className={`min-w-[800px] min-h-[600px] w-full h-screen bg-primary text-primary grid grid-cols-12 grid-rows-12 
       
     ${submenu === "IMPLANTAÇÃO" && "bg-[url(/projeto/implantacao/fundo-3.png)]"}
-    ${submenu === "PLANTAS" && "bg-[url(/projeto/plantas/fundo-plantas.png)]"}
+    
      bg-cover bg-center animate-fade-right animate-duration-[2000ms] ease-in-out"`}>
       <BarraLateral />
       <div
