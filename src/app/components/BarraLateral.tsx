@@ -19,7 +19,7 @@ const BarraLateral: React.FC<BarraLateralProps> = memo(function BarraLateral({ s
     setSubmenuAndSelected?.(item.submenu[0], item.caminho); // Chama a função setSubmenuAndSelected com o submenu e caminho do item
   }
   return (
-    <div className="bg-telamenu col-span-1 border-6 border-[#BC6422] flex flex-col w-full h-full items-center justify-between relative select-none row-span-12">
+    <div className="bg-telamenu col-span-1 border-6 border-[#BC6422] flex flex-col w-full h-full items-center justify-between relative select-none row-span-12 z-10">
         <div className="relative w-full h-full select-none  ">
           <Image
             src="/menu/logo-superior.svg"
@@ -29,8 +29,9 @@ const BarraLateral: React.FC<BarraLateralProps> = memo(function BarraLateral({ s
           />
         </div>
         {menuStructure.map((item, index) => (
-          <button key={index} className={`relative w-full h-full select-none ${select === index && 'bg-[url(/menu/fundo-pressed.svg)] bg-cover bg-center bg-no-repeat my-10'}`}
+          <button key={index} className="relative w-full h-full select-none"
           onClick={() => handleClick(item)}>  
+          <Image src="/menu/fundo-pressed.svg" alt="logo-superior" fill className={`${select === index && 'opacity-100'} select-none opacity-0`} />
             <Image
               src={select === index ? `/menu${item.caminho}-pressed.svg` : `/menu${item.caminho}.svg`}
               alt={`${item.title}`}

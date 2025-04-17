@@ -1,7 +1,7 @@
 const menuStructure = [
   {
     title: "LOCALIZAÇÃO",
-    submenu: ["TOUR 360º", "MAPAS"],
+    submenu: ["ILHA RASA", "MAPAS"],
     caminho: "/localizacao",
     submenuElements: ["mapas", "tour"],
   },
@@ -15,19 +15,19 @@ const menuStructure = [
     title: "PROJETO",
     submenu: ["IMPLANTAÇÃO", "PROFISSIONAIS"],
     caminho: "/projeto",
-    submenuElements: ["logo-escrita-projeto"],
+    submenuElements: ["implantacao", "profissionais"],
   },
   {
     title: "DIFERENCIAIS",
     submenu: ["SUSTENTABILIDADE", "ESTRUTURA", "GASTRONOMIA"],
     caminho: "/diferenciais",
-    submenuElements: ["logo-escrita-diferenciais"],
+    submenuElements: ["sustentabilidade", "estrutura", "gastronomia"],
   },
   {
     title: "VÍDEOS",
     submenu: [""],
     caminho: "/videos",
-    submenuElements: ["logo-escrita-videos"],
+    submenuElements: ["legenda-videos"],
   },
 ];
 

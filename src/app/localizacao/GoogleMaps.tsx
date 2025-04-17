@@ -27,8 +27,8 @@ const GoogleMap = () => {
   const initMap = () => {
     if (mapRef.current && window.google) {
       const newMap = new google.maps.Map(mapRef.current, {
-        center: { lat: -16.004796806902785, lng: -48.05758632370723 },
-        zoom: 17,
+        center: { lat: -22.699599285911233, lng: -41.96564242107102 },
+        zoom: 14,
         disableDefaultUI: true,
         zoomControl: true,
         gestureHandling: "greedy",
@@ -41,7 +41,7 @@ const GoogleMap = () => {
 
       // Adiciona um marcador personalizado
       new google.maps.Marker({
-        position: { lat: -16.004796806902785, lng: -48.05758632370723 },
+        position: { lat: -22.699599285911233, lng: -41.96564242107102 },
         map: newMap,
         icon: {
           url: "/local/pin-resid.svg", // Permite interações com um dedo
@@ -75,7 +75,7 @@ const GoogleMap = () => {
   };
 
   return (
-    <div className="relative w-full h-full">
+    <div className="relative w-full h-full col-span-9 row-span-12">
       <div ref={mapRef} className="w-full h-full" />
 
       {/* Botão de alternância do mapa */}

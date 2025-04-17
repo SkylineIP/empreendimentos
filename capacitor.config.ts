@@ -1,8 +1,8 @@
 import { CapacitorConfig } from '@capacitor/cli';
 
 const config: CapacitorConfig = {
-  appId: 'com.skylinedresden.app',
-  appName: 'Dresden Altez',
+  appId: 'com.skylineresid.app',
+  appName: 'Resid Club',
   webDir: 'out',
   plugins: {
     Updater: {

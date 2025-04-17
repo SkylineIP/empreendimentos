@@ -5,19 +5,10 @@ import { ContextDefault } from "../context/Context";
 
 import ThemeRegistry from "./materialUITheme";
 
-// import { CapacitorUpdater } from '@capgo/capacitor-updater'
-
-
-// CapacitorUpdater.notifyAppReady();
-
-// const func = async () => {
-//   await CapacitorUpdater.notifyAppReady();
-// }
-
 // func();
 
 export const metadata: Metadata = {
-  title: "Dresden Altez",
+  title: "Resid Club",
   description: "App for enterprises made by Fernando Oliveira",
 };
 
@@ -29,7 +20,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pt-br">
-      <body className={`bg-background text-foreground text-[Questrial]`}>
+      <body className={`bg-background text-foreground font-[Questrial]`}>
         <React.StrictMode>
           <ContextDefault>
             <ThemeRegistry>{children}</ThemeRegistry>

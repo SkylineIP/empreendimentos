@@ -2,7 +2,7 @@
 
 import React, { memo } from "react";
 import Image from "next/image";
-import { useRouter } from "next/navigation";
+import { useRouter, usePathname } from "next/navigation";
 import { useContextDefault } from "@/context/Context";
 import menuStructure from "../utils/menuStructure";
 interface SubmenuProps {
@@ -23,11 +23,11 @@ const SubmenuLocalizacao: React.FC<SubmenuProps> = memo(function Submenu({
   const router = useRouter();
   const context = useContextDefault();
   const setSubmenu = context?.setSubmenuAndSelected;
+  const currenthPath = usePathname();
   const selected = "border-[#E2B34A]";
   const released = "border-[#BC6422]";
   const submenu = context?.submenu;
-  const styleButton =
-    "w-full h-full relative cursor-pointer bg-black border-6 bg-[url(/submenu/imagem-tour.png)] bg-cover bg-center bg-no-repeat overflow-hidden";
+
   return (
     <div className="bg-telamenu col-span-2 rounded-br-[250px] border-6 border-[#BC6422] flex flex-col w-full h-full items-center justify-between m-0 p-0 z-20 row-span-12">
       <div className="w-full h-full relative bg-telamenu">
@@ -43,15 +43,17 @@ const SubmenuLocalizacao: React.FC<SubmenuProps> = memo(function Submenu({
         return (
           <div
             key={item}
-            className={`${styleButton} ${
-              submenu === menuStructure[menuSelect].submenu[index]
-                ? selected
-                : released
-            } ${index % 2 === 0 ? "rounded-br-[50%]" : "rounded-tl-[50%]"}`}
+            style={{ backgroundImage: `url(/submenu/imagem-${item}.png)` }}
+            className={`w-full h-full relative cursor-pointer bg-black border-6 
+               bg-cover bg-center bg-no-repeat overflow-hidden ${
+                 submenu === menuStructure[menuSelect].submenu[index]
+                   ? selected
+                   : released
+               } ${index % 2 === 0 ? "rounded-br-[50%]" : "rounded-tl-[50%]"}`}
             onClick={() =>
               setSubmenu?.(
                 menuStructure[menuSelect].submenu[index],
-                "/localizacao"
+                currenthPath
               )
             }
           >
@@ -84,21 +86,26 @@ const SubmenuLocalizacao: React.FC<SubmenuProps> = memo(function Submenu({
   );
 });
 
-const SubmenuImagens = memo(function Submenu() {
+interface SubmenuImagensProps {
+  indexLegenda: number;
+}
+
+const SubmenuImagens = memo(function Submenu({ indexLegenda }: SubmenuImagensProps) {
+  const router = useRouter();
   return (
     <div className="bg-telamenu col-span-2 rounded-br-[250px] border-6 border-[#BC6422] flex flex-col w-full h-full items-center justify-between m-0 p-0 z-20 row-span-12">
       <div className="w-full h-full relative bg-telamenu">
         <Image
-          src={`/submenu/${legendas[1]}.svg`}
-          alt={legendas[1]}
-          aria-label={legendas[1]}
+          src={`/submenu/${legendas[indexLegenda]}.svg`}
+          alt={legendas[indexLegenda]}
+          aria-label={legendas[indexLegenda]}
           fill
           className="object-contain"
         />
       </div>
       <div className="w-full h-full relative bg-telamenu">
         <Image
-          src={`/submenu/legenda-imagens.svg`}
+          src={`/submenu/legenda-${indexLegenda === 1 ? 'imagens': 'videos'}.svg`}
           alt="Legenda Imagens"
           aria-label="O seu clube
             exclusivo na ilha
@@ -113,7 +120,6 @@ const SubmenuImagens = memo(function Submenu() {
           className="object-contain"
         />
       </div>
-      
 
       <button className="w-full h-full relative cursor-pointer rounded-br-full">
         <Image
@@ -122,6 +128,7 @@ const SubmenuImagens = memo(function Submenu() {
           aria-label="Submenu Home"
           fill
           className="object-contain"
+          onClick={() => router.push("/")}
         />
       </button>
     </div>

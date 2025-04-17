@@ -69,15 +69,14 @@ img {/* Para navegadores baseados em WebKit */
     --telainicial: #000000;
     --telamenu: #234c43;
     --background: #ece2cd;
-    --foreground: #bc6422;
-    --menu: #afa38b;
+    --foreground: #234c43;
+    --menu: #234c43;
     --menuText: #1e1e1e;
     --submenuimagens: #E2B34A;
     user-select: none;
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
-    user-select: none;
   }
 
   /* @media (prefers-color-scheme: dark) {
