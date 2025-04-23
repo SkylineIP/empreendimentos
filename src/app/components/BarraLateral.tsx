@@ -31,7 +31,7 @@ const BarraLateral: React.FC = memo(function BarraLateral() {
     >
       <div>
         <Image
-          src="/logo-altez.svg"
+          src={`/LOGOTARDE.gif?${Date.now()}`} 
           alt="logo altez"
           width={200}
           height={200}

@@ -9,6 +9,7 @@ import { ThemeProvider } from "@mui/material/styles";
 import { useContextDefault } from "@/context/Context";
 import TelaCheia from "./components/TelaCheia";
 import Music from "./components/Musix";
+import { Updater } from "./Updater";
 
 //configurar tema
 //cores e fontes
@@ -58,6 +59,7 @@ export default function ThemeRegistry({ children }: { children: React.ReactNode 
   return (
     <ThemeProvider theme={theme}>
       {loading && <LoadingOverlay />}
+      <Updater />
       {/* pathname === '/' || pathname === '/menu' ? '' : <BarraLateral /> */}
       {isLandscape ? children : <OrientationWarning />}
       {abrirImagensTelaCheia?.open && (<TelaCheia />)}
