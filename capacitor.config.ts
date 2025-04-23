@@ -5,12 +5,6 @@ const config: CapacitorConfig = {
   appName: 'Dresden Altez',
   webDir: 'out',
   plugins: {
-    Updater: {
-      autoUpdate: true,
-      url: 'https://github.com/SkylineIP/empreendimentos/tree/dresden-altez',
-      channel: 'stable',
-      checkFrequency: 'onAppStart',
-    },
     SplashScreen: {
       launchShowDuration: 2000,  // Tempo da splash (em ms)
       launchAutoHide: true,
