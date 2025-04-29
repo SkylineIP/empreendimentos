@@ -4,13 +4,8 @@ const config: CapacitorConfig = {
   appId: 'com.skylineresid.app',
   appName: 'Resid Club',
   webDir: 'out',
+  
   plugins: {
-    Updater: {
-      autoUpdate: true,
-      url: 'https://github.com/SkylineIP/empreendimentos/tree/dresden-altez',
-      channel: 'stable',
-      checkFrequency: 'onAppStart',
-    },
     SplashScreen: {
       launchShowDuration: 2000,  // Tempo da splash (em ms)
       launchAutoHide: true,

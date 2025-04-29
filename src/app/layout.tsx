@@ -12,7 +12,6 @@ export const metadata: Metadata = {
   description: "App for enterprises made by Fernando Oliveira",
 };
 
-
 export default function RootLayout({
   children,
 }: Readonly<{

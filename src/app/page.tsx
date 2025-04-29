@@ -12,7 +12,7 @@ const Home: React.FC = () => {
   const setSubmenuAndSelected = context?.setSubmenuAndSelected;
   const handleClick = () => {
     router.push("/localizacao"); // Redireciona para a página de localizaçãoyline como false para ocultar a imagem de fundo
-    setSubmenuAndSelected?.('TOUR 360º', '/localizacao'); // Chama a função setSubmenuAndSelected com o submenu e caminho desejado
+    setSubmenuAndSelected?.('ILHA RASA', '/localizacao'); // Chama a função setSubmenuAndSelected com o submenu e caminho desejado
     if (toogleSound) {
       toogleSound("start-exp.mp3"); // Chama a função toogleSound com o caminho do áudio
     } // Verifica se toogleSound está definido

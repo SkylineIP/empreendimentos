@@ -32,7 +32,8 @@ interface SvgImplantacaoProps {
         />
       </mask>
       {/* Quadras esportivas */}
-      <g onClick={() => setDetalhes({status: true, elementoIndex: 6})} className="group  cursor-pointer">
+      {/* <g onClick={() => setDetalhes({status: true, elementoIndex: 6})} className="group  cursor-pointer"> */}
+      <g className="group brightness-60 ">
         {/* Quadras Esportivas */}
         <path
           d="M1386 233.5C1386 201.191 1412.19 175 1444.5 175H1988.5C2020.81 175 2047 201.191 2047 233.5C2047 265.809 2020.81 292 1988.5 292H1444.5C1412.19 292 1386 265.809 1386 233.5Z"
@@ -312,7 +313,7 @@ interface SvgImplantacaoProps {
         />
       </g>
       {/* Heliponto */}
-      <g  className="group opacity-100 ">
+      <g  className="group brightness-60 ">
         <mask
           id="path-5-outside-5_101_23"
           maskUnits="userSpaceOnUse"

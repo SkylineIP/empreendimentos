@@ -30,6 +30,7 @@ const BarraLateral: React.FC<BarraLateralProps> = memo(function BarraLateral({ s
         </div>
         {menuStructure.map((item, index) => (
           <button key={index} className="relative w-full h-full select-none"
+          disabled={item.title === 'DIFERENCIAIS' }
           onClick={() => handleClick(item)}>  
           <Image src="/menu/fundo-pressed.svg" alt="logo-superior" fill className={`${select === index && 'opacity-100'} select-none opacity-0`} />
             <Image

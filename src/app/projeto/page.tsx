@@ -21,10 +21,10 @@ const Imagens: React.FC = memo(function Imagens() {
       ) : (
         <Profissionais />
       )}
-      <div className="absolute h-1/6 bottom-0 right-0 w-full bg-[#ECE2CD]">
+      <div className="absolute h-1/8 bottom-0 right-0 w-full bg-[#ECE2CD]">
         <div className="w-9/12 h-full absolute flex justify-center items-center right-0">
           <Image
-            src="/projeto/clique-legenda.svg"
+            src={`/projeto/${submenu === 'IMPLANTAÇÃO' ? 'clique-legenda' : 'arraste-tudo'}.svg`}
             alt="Imagem de Implantação"
             width={250}
             height={100}

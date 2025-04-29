@@ -20,7 +20,10 @@ export default {
         submenuimagens: "var(--submenuimagens)",
       },
       gridTemplateColumns: {
-        24: "repeat(24, minmax(0, 1fr))",
+        '24': 'repeat(24, minmax(0, 1fr))',
+      },
+      gridTemplateRows: {
+        '24': 'repeat(24, minmax(0, 1fr))',
       },
       fontFamily: {
         minhaFonte: ['OpenSans', 'OpenSansCondensed', 'sans-OpenSansSemiCondensed', 'PPPangaia', 'Questrial'],
