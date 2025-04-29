@@ -16,6 +16,8 @@ export interface Context {
   setOpenMenu: (open: boolean) => void;
   abrirImagensTelaCheia: { open: boolean; pathImage: string };
   setAbrirImagensTelaCheia: (abrir: { open: boolean; pathImage: string }) => void;
+  playVideo: boolean;
+  setVideo: (play: boolean) => void;
 
 }
 
@@ -35,7 +37,8 @@ export const ContextDefault = ({ children }: { children: ReactNode }) => {
   const [menu, setMenu] = useState({ submenu: arrayOfSubmenu, selected: currenthPath });
   const [openMenu, setOpenMenu] = useState(true);
   const [abrirImagensTelaCheia, setAbrirImagensTelaCheia] = useState({open: false, pathImage: ""});
-  const [soundPath, setSoundPath] = useState("/start-exp.mp3");
+  const [soundPath, setSoundPath] = useState("/praia.mp3");
+  const [playVideo, setVideo] = useState(false);
 
 
   const setSubmenuAndSelected = (submenu: string, selected: string) => {
@@ -62,6 +65,8 @@ export const ContextDefault = ({ children }: { children: ReactNode }) => {
       setAbrirImagensTelaCheia,
       soundPath,
       setSoundPath,
+      playVideo,
+      setVideo,
     }}>
       {children}
     </ContextDef.Provider>

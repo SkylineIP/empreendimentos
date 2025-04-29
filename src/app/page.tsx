@@ -41,6 +41,9 @@ const Home: React.FC = () => {
             />
           </button>
         </div>
+        <div className="hidden h-0 w-0">
+      <audio src="praia.mp3" autoPlay />
+    </div>
     </div>
   );
 };

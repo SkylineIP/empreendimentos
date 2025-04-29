@@ -13,6 +13,7 @@ interface BarraLateralProps {
 const BarraLateral: React.FC<BarraLateralProps> = memo(function BarraLateral({ select }) {
   const context = useContextDefault();
   const setSubmenuAndSelected = context?.setSubmenuAndSelected;
+  const setVideo = context?.setVideo;
   const router = useRouter();
   const handleClick = (item: { caminho: string, submenu: string[] }) => {
     router.push(item.caminho);
@@ -31,7 +32,12 @@ const BarraLateral: React.FC<BarraLateralProps> = memo(function BarraLateral({ s
         {menuStructure.map((item, index) => (
           <button key={index} className="relative w-full h-full select-none"
           disabled={item.title === 'DIFERENCIAIS' }
-          onClick={() => handleClick(item)}>  
+          onClick={() => {
+            handleClick(item);
+            if(item.title === 'VÍDEOS'){
+              setVideo?.(true);
+            }
+          }}>  
           <Image src="/menu/fundo-pressed.svg" alt="logo-superior" fill className={`${select === index && 'opacity-100'} select-none opacity-0`} />
             <Image
               src={select === index ? `/menu${item.caminho}-pressed.svg` : `/menu${item.caminho}.svg`}

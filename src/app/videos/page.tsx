@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useEffect } from "react";
 import { useRef, useState } from "react";
 import { IconButton } from "@mui/material";
 import {
@@ -19,10 +19,13 @@ import Box from "@mui/material/Box";
 import Slider from "@mui/material/Slider";
 import { SubmenuImagens } from "../components/Submenu";
 import Image from "next/image";
+import { useContextDefault } from "@/context/Context";
 
 const Videos: React.FC = () => {
   const videoRef = useRef<HTMLVideoElement | null>(null); // 🔹 Tipagem corrigida
-  const [playing, setPlaying] = useState(true);
+  const context = useContextDefault();
+  const playVideo = context?.playVideo;
+  const [playing, setPlaying] = useState(playVideo);
   const [showControls, setShowControls] = useState(true);
   const [muted, setMuted] = useState(false);
   const [showVolumeSlider, setShowVolumeSlider] = useState(false);
@@ -33,6 +36,14 @@ const Videos: React.FC = () => {
   const inactivityTimeoutRef = useRef<NodeJS.Timeout | null>(null);
   const containerRef = useRef<HTMLDivElement | null>(null);
   const [video, setVideo] = useState("/videos/chefe.mp4");
+
+  useEffect(() => {
+    if(videoRef.current) {
+      videoRef.current.playsInline = true; // Adiciona o atributo playsInline
+      videoRef.current.play();
+    }
+  }, [playVideo]);
+
   const handleMouseMove = () => {
     setShowControls(true);
 
@@ -110,13 +121,12 @@ const Videos: React.FC = () => {
           onMouseMove={handleMouseMove}
         >
           <video
-            poster="/poster-video-1.png"
             autoPlay
+            onClick={togglePlay}
+            poster={video === '/videos/chefe.mp4' ? '/videos/poster-video-1.png' : '/videos/poster-video-2.png'}
             ref={videoRef} // 🔹 Corrigido
             className="w-full h-screen object-cover animate-fade animate-duration-[1000ms]"
             src={video} // Substitua pelo caminho do seu vídeo
-            onClick={togglePlay}
-            playsInline
             onTimeUpdate={() =>
               setCurrentTime(
                 Number(videoRef.current?.currentTime.toFixed(2)) || 0
@@ -197,20 +207,45 @@ const Videos: React.FC = () => {
             </div>
           )}
         </div>
-        <div className={`absolute w-full h-full top-[1/2] py-[16%]`}>
+        <div className={`absolute w-full h-full top-[1/2] py-[16%] prevent-clicks`}>
           <div className="w-1/6 pl-10 h-full flex flex-col justify-evenly items-start gap-y-8">
-            <button className="grow w-full h-full relative">
+            <button className="grow w-full h-full relative pointer-events-auto ">
               <Image
                 src="/videos/video-2.png"
                 alt="Imagem de Implantação"
                 fill
                 className="object-cover absolute border-6 border-[#BC6422] rounded-3xl"
                 onClick={() => {
-                  if (videoRef.current) {
-                    videoRef.current.pause();
-                    videoRef.current.play();
-                  }
                   setVideo("/videos/chefe.mp4");
+                  videoRef.current?.play();
+                  setPlaying(true);
+                }}
+              />
+              <Image
+                src="/videos/play.svg"
+                alt="Imagem de Implantação"
+                width={50}
+                height={50}
+                className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+                onClick={() => {
+                  setVideo("/videos/chefe.mp4");
+                  videoRef.current?.play();
+                  setPlaying(true);
+                }}
+              />
+              {video === "/videos/chefe.mp4" && (
+                <div className="bg-black/30 backdrop-brightness-50 w-full h-full z-10 border-6 border-[#BC6422] rounded-3xl"></div>
+              )}
+            </button>
+            <button className="grow w-full h-full relative pointer-events-auto">
+              <Image
+                src="/videos/video-1.png"
+                alt="Imagem de Implantação"
+                fill
+                className="object-cover absolute border-6 border-[#BC6422] rounded-3xl"
+                onClick={() => {
+                  setVideo("/videos/video-2.mp4");
+                  videoRef.current?.play();
                   setPlaying(true);
                 }}
               />
@@ -222,47 +257,12 @@ const Videos: React.FC = () => {
                 className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
                 onClick={() => {
                   setVideo("/videos/video-2.mp4");
-                  if (videoRef.current) {
-                    videoRef.current.pause();
-                    videoRef.current.play();
-                    setPlaying(true);
-                  }
-                }}
-              />
-              {video === "/videos/chefe.mp4" && (
-                <div className="bg-black/30 backdrop-brightness-50 w-full h-full z-10 border-6 border-[#BC6422] rounded-3xl"></div>
-              )}
-            </button>
-            <button className="grow w-full h-full relative">
-              <Image
-                src="/videos/video-1.png"
-                alt="Imagem de Implantação"
-                fill
-                className="object-cover absolute border-6 border-[#BC6422] rounded-3xl"
-                onClick={() => {
-                  setVideo("/videos/video-2.mp4");
-                  if (videoRef.current) {
-                    videoRef.current.play();
-                    setPlaying(true);
-                  }
-                }}
-              />
-              <Image
-                src="/videos/play.svg"
-                alt="Imagem de Implantação"
-                width={50}
-                height={50}
-                className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
-                onClick={() => {
-                  setVideo("/videos/video-2.mp4");
-                  if (videoRef.current) {
-                    videoRef.current.play();
-                    setPlaying(true);
-                  }
+                  videoRef.current?.play();
+                  setPlaying(true);
                 }}
               />
               {video === "/videos/video-2.mp4" && (
-                <div className="bg-black/30 backdrop-brightness-50 w-full h-full z-10 border-6 border-[#BC6422] rounded-3xl"></div>
+                <div className="bg-black/30 backdrop-brightness-50 w-full h-full z-10 border-6 border-[#BC6422] rounded-3xl select-none prevent-clicks"></div>
               )}
             </button>
           </div>
@@ -274,77 +274,3 @@ const Videos: React.FC = () => {
 };
 
 export default Videos;
-
-// const videoRef = useRef<HTMLVideoElement | null>(null); // 🔹 Tipagem corrigida
-// const [playing, setPlaying] = useState(false);
-// const [muted, setMuted] = useState(false);
-// const [isFullscreen, setIsFullscreen] = useState(false);
-// const containerRef = useRef<HTMLDivElement | null>(null);
-
-// const togglePlay = () => {
-//   if (videoRef.current) {
-//     // 🔹 Sempre verificar se não é null
-//     if (playing) {
-//       videoRef.current.pause();
-//     } else {
-//       videoRef.current.play();
-//     }
-//     setPlaying(!playing);
-//   }
-// };
-
-// const toggleMute = () => {
-//   if (videoRef.current) {
-//     videoRef.current.muted = !muted;
-//     setMuted(!muted);
-//   }
-// };
-
-// const toggleFullscreen = () => {
-//   if (containerRef.current) {
-//     if (!document.fullscreenElement) {
-//       containerRef.current
-//         .requestFullscreen()
-//         .then(() => setIsFullscreen(true));
-//     } else {
-//       document.exitFullscreen().then(() => setIsFullscreen(false));
-//     }
-//   }
-// };
-
-// return (
-//   <div className="w-full h-screen bg-telamenu grid grid-cols-12 grid-rows-12 min-h-[800px] min-w-[1200px] relative">
-//     <BarraLateral select={4} />
-//     <SubmenuImagens indexLegenda={4} />
-//     <div className="col-span-9 bg-[#003332] row-span-12 grid grid-rows-12 relative">
-//       <div className="row-span-1"></div>
-//       <div ref={containerRef} className="relative col-span-10 w-full h-[83vh] overflow-hidden">
-//         <video
-//           ref={videoRef} // 🔹 Corrigido
-//           className="w-full h-screen object-center animate-fade animate-duration-[1000ms] -z-10"
-//           src="/videos/chefe.mp4" // Substitua pelo caminho do seu vídeo
-//           onClick={togglePlay}
-//           playsInline
-//         ></video>
-//         <div className="absolute bottom-2 left-2 right-2 flex items-center justify-between bg-[#003332]/70 p-2 mx-12 rounded-lg z-50 border-2 border-[#003332] ">
-//           {/* Botão Play/Pause */}
-//           <div>
-//             <IconButton onClick={togglePlay} className="text-white">
-//               {playing ? <Pause /> : <PlayArrow />}
-//             </IconButton>
-
-//             {/* Botão Mute/Unmute */}
-//             <IconButton onClick={toggleMute} className="text-white">
-//               {muted ? <VolumeOff /> : <VolumeUp />}
-//             </IconButton>
-//           </div>
-
-//           <IconButton onClick={toggleFullscreen} className="text-white ">
-//             {isFullscreen ? <FullscreenExit /> : <Fullscreen />}
-//           </IconButton>
-//         </div>
-//       </div>
-//       <div className="row-span-1 bg-white"></div>
-//     </div>
-//   </div>
-// );
