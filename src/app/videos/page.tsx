@@ -1,8 +1,8 @@
 "use client";
 
-import React from "react";
+import React, { useEffect } from "react";
 import { useRef, useState } from "react";
-import { IconButton } from "@mui/material";
+import { Fab, IconButton } from "@mui/material";
 import {
   PlayArrow,
   Pause,
@@ -18,6 +18,14 @@ import BarraLateral from "../components/BarraLateral";
 import Box from "@mui/material/Box";
 
 import Slider from "@mui/material/Slider";
+import Submenu from "../components/Submenu";
+
+const videos = [
+  { title: "CONCEITO", path: "/video-conceito" },
+  { title: "101 M²", path: "/apt-101" },
+  { title: "122 M²", path: "/apt-122" },
+  { title: "150 M²", path: "/apt-155" },
+];
 
 const Videos: React.FC = () => {
   const videoRef = useRef<HTMLVideoElement | null>(null); // 🔹 Tipagem corrigida
@@ -33,6 +41,10 @@ const Videos: React.FC = () => {
   const containerRef = useRef<HTMLDivElement | null>(null);
   const context = useContextDefault();
   const openMenu = context?.openMenu;
+  const submenu = context?.submenu;
+  const videosPath = submenu
+    ? videos.find((video) => video.title === submenu)?.path
+    : videos[0].path; // 🔹 Usando o submenu para determinar o vídeo
 
   const handleMouseMove = () => {
     setShowControls(true);
@@ -83,12 +95,12 @@ const Videos: React.FC = () => {
 
   const handleVolumeChange = (event: Event, newValue: number | number[]) => {
     const newVolume = typeof newValue === "number" ? newValue : newValue[0];
-    
+
     setVolume(newVolume);
 
     // Aqui você aplicaria o volume ao seu player de vídeo/áudio
     if (videoRef.current) {
-      videoRef.current.volume = (newVolume / 100);
+      videoRef.current.volume = newVolume / 100;
       videoRef.current.muted = false;
       if (newVolume === 0) {
         setMuted(true);
@@ -97,6 +109,10 @@ const Videos: React.FC = () => {
       }
     }
   };
+
+  useEffect(() => {
+    setPlaying(false);
+  }, [submenu]);
 
   return (
     <div
@@ -115,7 +131,7 @@ const Videos: React.FC = () => {
         <div
           className={`${
             isFullscreen && !showControls ? "cursor-none" : "cursor-auto"
-          } row-span-12 w-full h-full relative pl-7`}
+          } row-span-10 w-full h-full relative pl-7`}
           ref={containerRef}
           onMouseMove={handleMouseMove}
         >
@@ -123,11 +139,13 @@ const Videos: React.FC = () => {
             poster="/thumb.png"
             ref={videoRef} // 🔹 Corrigido
             className="w-full h-full object-contain animate-fade animate-duration-[1000ms]"
-            src="/video-conceito.mp4" // Substitua pelo caminho do seu vídeo
+            src={`${videosPath}.mp4`} // Substitua pelo caminho do seu vídeo
             onClick={togglePlay}
             playsInline
             onTimeUpdate={() =>
-              setCurrentTime(Number(videoRef.current?.currentTime.toFixed(2)) || 0)
+              setCurrentTime(
+                Number(videoRef.current?.currentTime.toFixed(2)) || 0
+              )
             }
             onLoadedMetadata={() =>
               setDuration(videoRef.current?.duration || 0)
@@ -204,7 +222,7 @@ const Videos: React.FC = () => {
           )}
         </div>
 
-        {/* <Submenu /> */}
+        <Submenu />
       </div>
     </div>
   );
