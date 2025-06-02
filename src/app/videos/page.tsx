@@ -18,7 +18,8 @@ import BarraLateral from "../components/BarraLateral";
 import Box from "@mui/material/Box";
 
 import Slider from "@mui/material/Slider";
-import Submenu from "../components/Submenu";
+import Image from "next/image";
+import menuStructure from "../utils/menuStructure";
 
 const videos = [
   { title: "CONCEITO", path: "/video-conceito" },
@@ -42,6 +43,17 @@ const Videos: React.FC = () => {
   const context = useContextDefault();
   const openMenu = context?.openMenu;
   const submenu = context?.submenu;
+
+  const selected = context?.selected;
+  const indexSelected = menuStructure.findIndex(
+    (item) => item.caminho == selected
+  );
+  const arrayOfSubmenu = menuStructure[indexSelected].submenu;
+  const setSubmenuAndSelected = context
+    ? context.setSubmenuAndSelected
+    : () => {};
+  const btnPressed = "bg-[#AFA38B] text-[#1E1E1E]  border-[#1E1E1E]";
+  const btnNormal = "bg-[#1E1E1E] text-[#AFA38B] border-2";
   const videosPath = submenu
     ? videos.find((video) => video.title === submenu)?.path
     : videos[0].path; // 🔹 Usando o submenu para determinar o vídeo
@@ -222,7 +234,55 @@ const Videos: React.FC = () => {
           )}
         </div>
 
-        <Submenu />
+        <div className="bg-[#AFA38B] row-span-2  ml-6 mt-6 flex justify-center items-center">
+          {arrayOfSubmenu.map((item, index) => (
+            <button
+              key={index}
+              className={`${
+                submenu == item ? btnPressed : `${btnNormal}`
+              } border-2 relative flex w-56 desktop:w-72 items-center justify-center rounded-lg shadow-md overflow-hidden h-12 ${
+                indexSelected === 4 ? "mx-4" : "desktop:mx-12 mx-4"
+              }`}
+              onClick={() => {
+                setSubmenuAndSelected(item, selected || "");
+              }}
+              disabled={item == "PROJETISTAS"}
+            >
+              {/* {console.log(item, submenu)} */}
+              <div className="absolute inset-y-0 left-0 w-12 h-full">
+                <Image
+                  src={`${
+                    submenu == item
+                      ? "/menu/grafismo-submenu.svg"
+                      : "/menu/grafismo-submenu-pressed.svg"
+                  }`}
+                  alt="Decoração esquerda"
+                  fill
+                  className="object-fill"
+                />
+              </div>
+
+              {/* Texto */}
+              <span className="text-sm tracking-wide ml-11 my-1 grow desktop:text-xl p-2 desktop:p-0">
+                {item}
+              </span>
+
+              {/* Ícone Direito */}
+              <div className="w-12 h-full relative">
+                <Image
+                  src={`${
+                    submenu == item
+                      ? "/menu/grafismo-submenu.svg"
+                      : "/menu/grafismo-submenu-pressed.svg"
+                  }`}
+                  alt="Ícone de localização"
+                  fill
+                  className="scale-x-[-1] object-fill"
+                />
+              </div>
+            </button>
+          ))}
+        </div>
       </div>
     </div>
   );
