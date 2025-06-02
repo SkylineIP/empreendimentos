@@ -2,7 +2,7 @@
 
 import React, { useEffect } from "react";
 import { useRef, useState } from "react";
-import { Fab, IconButton } from "@mui/material";
+import { IconButton } from "@mui/material";
 import {
   PlayArrow,
   Pause,
