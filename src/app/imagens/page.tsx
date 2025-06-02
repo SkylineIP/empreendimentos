@@ -7,6 +7,7 @@ import { useContextDefault } from "../../context/Context";
 import Image from "next/image";
 import AreasComuns from "./AreasComuns";
 import Apartamentos from "./Apartamentos";
+import TourVitual from "./TourVitual";
 
 const arrayCom32Itens = Array.from(
   { length: 32 },
@@ -166,6 +167,7 @@ const Imagens: React.FC = memo(function Localizacao() {
             {submenu === "APARTAMENTOS" && (
               <Apartamentos setImagemAmpliada={setImagemAmpliada} />
             )}
+            {submenu === "TOUR VIRTUAL" && <TourVitual />}
           </>
         )}
         <Submenu />

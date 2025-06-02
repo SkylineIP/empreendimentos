@@ -122,7 +122,7 @@ const Videos: React.FC = () => {
           <video
             poster="/thumb.png"
             ref={videoRef} // 🔹 Corrigido
-            className="w-full h-full object-cover animate-fade animate-duration-[1000ms]"
+            className="w-full h-full object-contain animate-fade animate-duration-[1000ms]"
             src="/video-conceito.mp4" // Substitua pelo caminho do seu vídeo
             onClick={togglePlay}
             playsInline
