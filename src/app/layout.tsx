@@ -5,8 +5,8 @@ import { ContextDefault } from "../context/Context";
 import ThemeRegistry from "./materialUITheme";
 
 export const metadata: Metadata = {
-  title: "Nas Rocas - Resid Club & Hotels",
-  description: "Nas Rocas - Resid Club & Hotels",
+  title: "Skyline",
+  description: "Modelo de Replicação apoiado na Documentação feita para o setor",
 };
 
 export default function RootLayout({
