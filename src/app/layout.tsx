@@ -2,14 +2,11 @@ import type { Metadata } from "next";
 import "./globals.css";
 import React from "react";
 import { ContextDefault } from "../context/Context";
-
-import BackgroundMusic from "./components/BackgroundMusix";
-
 import ThemeRegistry from "./materialUITheme";
 
 export const metadata: Metadata = {
-  title: "Modelo Base",
-  description: "App for enterprises made by Fernando Oliveira",
+  title: "Nas Rocas - Resid Club & Hotels",
+  description: "Nas Rocas - Resid Club & Hotels",
 };
 
 export default function RootLayout({
@@ -19,11 +16,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pt-br">
-      <body className={`bg-background font-[Aktiv] text-foreground`}>
+      <body className={`bg-background text-foreground font-[Questrial]`}>
         <React.StrictMode>
           <ContextDefault>
             <ThemeRegistry>{children}</ThemeRegistry>
-            <BackgroundMusic />
             {/* preciso colocar a barra lateral aqui, porque ela aparece em todas as telas, menos na rota '/' e na rota '/menu'*/}
           </ContextDefault>
         </React.StrictMode>
